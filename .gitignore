@@ -1,0 +1,22 @@
+# ignore the following sub folders
+/b_320
+/fdrel_225
+
+# ignore sftp-config
+*.json
+
+# ignore the following file types
+*.doc
+*.docx
+*.jpeg
+*.JPEG
+*.jpg
+*.JPG
+*.mp4
+*.pdf
+*.png
+*.PNG
+*.psd
+*.xls
+*.xlsx
+*.zip
