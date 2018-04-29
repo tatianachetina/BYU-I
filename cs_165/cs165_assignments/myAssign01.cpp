@@ -47,22 +47,9 @@ int main()
    // relatives' DNA sequences [max num possible relatives][DNA sequences]
    char relativesDNASequences[50][11];
 
-   // cout << "DNA Sequence is: " << getDNASequence() << endl; // 86
-   // cout << "Number of relatives is: " << numRelatives << endl; // 86
-
    getRelativesNames(relatives, numRelatives);
    getRelativesDNASequences(relatives, relativesDNASequences, numRelatives);
    matchDNASequences(relatives, relativesDNASequences, numRelatives, dnaSequence);
-
-   // cout << "Relatives Names: \n"          // 86
-   //      << "1: " << relatives[0] << endl  // 86
-   //      << "2: " << relatives[1] << endl  // 86
-   //      << "3: " << relatives[2] << endl; // 86
-
-   // cout << "Relatives DNA Sequences: \n"          // 86
-   //      << "1: " << relativesDNASequences[0] << endl  // 86
-   //      << "2: " << relativesDNASequences[1] << endl  // 86
-   //      << "3: " << relativesDNASequences[2] << endl; // 86
 
    return 0;
 }
@@ -81,7 +68,6 @@ string getDNASequence()
    cout << "Enter your DNA sequence: ";
    // update DNA sequence with user-provided entry
    cin >> dnaSequence;
-   // getline(cin, dnaSequence); // 86
 
    // return DNA sequence
    return dnaSequence;
@@ -114,6 +100,9 @@ int getNumRelatives()
 void getRelativesNames(char relatives[][256],
                        int numRelatives)
 {
+   // start with a new line return
+   cout << endl;
+
    // prompt user for 'n' number of names (based on what s/he provided) as a
    // number of relatives
    for(int i = 0; i < numRelatives; i++)
@@ -137,6 +126,9 @@ void getRelativesDNASequences(char relatives[][256],
                               char dnaSequences[][11],
                               int numRelatives)
 {
+   // start with a new line return
+   cout << endl;
+
    // prompt user for 'n' number of DNA sequences (based on what s/he
    // provided) as a number of relatives
    for(int i = 0; i < numRelatives; i++)
@@ -156,20 +148,22 @@ void matchDNASequences(char relatives[][256],
                        int numRelatives,
                        string dnaSequence)
 {
-   int percentMatch;
+   // start with a new line return
+   cout << endl;
 
-   for(int i = 0; i <= 10; i++)
-   {
-      if(dnaSequences[0][i] == dnaSequence[i])
-      {
-         percentMatch++;
-      }
-   }
+   int percentMatch = 0;
 
    for(int i = 0; i < numRelatives; i++)
    {
-      // prompt user for relatives' DNA sequences
+      for(int j = 0; j < 10; j++)
+      {
+         if(dnaSequences[i][j] == dnaSequence[j])
+         {
+            percentMatch++;
+         }
+      }
       cout << "Percent match for " << relatives[i] << ": " << percentMatch * 10 << "%\n";
+      percentMatch = 0;
    }
 
    // end function
