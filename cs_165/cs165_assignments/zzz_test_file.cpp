@@ -2,45 +2,48 @@
 #include <string>
 #include <cassert>
 #include <fstream>
-#include <iomanip>   // we will use setw() in this example
-#include <cstdlib> // for atof()
+#include <iomanip>   // for setw()
+#include <cstdlib>   // for atof()
 using namespace std;
 
 // prototypes
-int getSize();
-void getList(int list[], int size);
-void displayMultiples(int list[], int size);
+int countLetters(string dnaSequence, char words[][11], int numRelatives);
 
 /**
  * MAIN
- * This is the entry point and driver for the program
+ * Determine the number of given letters are in a given text string.
+ *    INPUT: letter (from user), text (string from user)
  */
-// int main()
-// {
-//    bool b = false || true && false || true;
-
-//    // configure the output to display money for monthly income
-//    cout.setf(ios::fixed);     // no scientific notation
-//    cout.setf(ios::showpoint); // always show the decimal point
-//    cout.precision(1);         // one decimals for cents
-
-//    cout << b << endl;
-
-//    return 0;
-// }
-
-char value = 'a';
-
 int main()
 {
-   char value = 'b';
+   char words[4][11] = {"TTTCGACTGA",   // 90% match
+                        "AAACGTCAGT",   // 50% match
+                        "ATTGCAGTCA",   // 60% match
+                        "ATTCGACTGA"};  // 1000% match
+   string dnaSequence = "ATTCGACTGA";
+   int numRelatives = 4;
 
-   if (true)
-   {
-      char value = 'c';
-   }
-
-   cout << value << endl;
+   countLetters(dnaSequence, words, numRelatives);
 
    return 0;
+}
+
+int countLetters(string dnaSequence, char words[][11], int numRelatives)
+{
+   int numLetters = 0;
+
+   for(int i = 0; i < numRelatives; i++)
+   {
+      for(int j = 0; j < 10; j++)
+      {
+         if(words[i][j] == dnaSequence[j])
+         {
+            numLetters++;
+         }
+      }
+      cout << "Percent match for [name]: " << numLetters * 10 << "%\n";
+      numLetters = 0;
+   }
+
+   return numLetters;
 }

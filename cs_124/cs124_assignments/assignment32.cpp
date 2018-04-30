@@ -63,11 +63,9 @@ int countLetters(const char letter, const char text[])
 {
    int numLetters = 0;
 
-
-
-   for(int iLetters = 0; text[iLetters]; iLetters++)
+   for(int i = 0; text[i]; i++)
    {
-      if(letter == text[iLetters])
+      if(letter == text[i])
       {
          numLetters++;
       }
