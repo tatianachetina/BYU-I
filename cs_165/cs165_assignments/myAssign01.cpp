@@ -11,11 +11,17 @@
 *    relative.
 *
 *    Estimated:  3.0 hrs   
-*    Actual:     0.0 hrs
+*    Actual:     6.0 hrs
 * Please describe briefly what was the most difficult part:
 *    I struggled with matching the letter of each DNA sequence to the
 *    comparison sequence. My nested for loops had transposed boolean
 *    variables. It took me quite a lot of time to find the error.
+*
+*    Note about loops: The Week 2 Hint (April 30) states, "Non-standard,
+*    start at 1 and go <= size, instead of start at 0 to < size." Based
+*    on the wording, I couldn't tell if that meant I should or shouldn't
+*    start a loop with "1." I started at "0" since that's the way I learned
+*    to do it. Please let me know if that is incorrect.
 ************************************************************************/
 
 #include <iostream>
@@ -123,7 +129,7 @@ void getRelativesNames(char relatives[][256],
 
    // prompt user for a number of names (based on what s/he provided) as a
    // number of relatives
-   for (int i = 0; i < numRelatives; i++)
+   for (int i = 0; i < numRelatives; i++) // see note about loops in header
    {
       // prompt user for relatives' names
       cout << "Please enter the name of relative #" << i + 1 << ": ";
@@ -151,7 +157,7 @@ void getRelativesDNASequences(char relatives[][256],
 
    // prompt user for a number of DNA sequences (based on what s/he
    // provided) as a number of relatives
-   for (int i = 0; i < numRelatives; i++)
+   for (int i = 0; i < numRelatives; i++) // see note about loops in header
    {
       // prompt user for relatives' DNA sequences
       cout << "Please enter the DNA sequence for " << relatives[i] << ": ";
@@ -186,10 +192,10 @@ void matchDNASequences(char relatives[][256],
    string relativeName;
 
    // iterate over each relative
-   for (int i = 0; i < numRelatives; i++)
+   for (int i = 0; i < numRelatives; i++) // see note about loops in header
    {
       // iterate over each letter in each relatives' DNA sequence
-      for (int j = 0; j < 10; j++)
+      for (int j = 0; j < 10; j++) // see note about loops in header
       {
          // if letter from sequence is a match
          if (dnaSequences[i][j] == dnaSequence[j])
