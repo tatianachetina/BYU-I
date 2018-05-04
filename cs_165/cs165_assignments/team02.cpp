@@ -31,7 +31,7 @@ void promptScripture(Scripture & newScripture);
  ***********************************************************************/
 int main()
 {
-   // new instance of Scripture data type called "initialScripture"
+   // new instance of Scripture
    Scripture initialScripture = {
       "Alma",
       31,
@@ -58,7 +58,7 @@ void promptScripture(Scripture & newScripture)
    // prompt for book
    cout << "Book: ";
    // update book
-   cin >> newScripture.book;
+   getline(cin, newScripture.book);
    // prompt for chapter
    cout << "Chapter: ";
    // update chapter
