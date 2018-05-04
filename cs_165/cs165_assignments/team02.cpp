@@ -21,8 +21,8 @@ struct Scripture
 };
 
 // prototypes
-void displayScripture(Scripture & passedScripture);
-void promptScripture(Scripture & newScripture);
+void displayScripture(Scripture scripture[], int size);
+void promptScripture(Scripture scripture[], int size);
 
 /**********************************************************************
  * Function: main
@@ -32,18 +32,12 @@ void promptScripture(Scripture & newScripture);
 int main()
 {
    // new instance of Scripture
-   Scripture initialScripture = {
-      "Alma",
-      31,
-      5
-   };
+   Scripture initialScripture[3];
 
-   // print initialScripture to the screen: Alma 31:5
-   displayScripture(initialScripture);
    // prompt for new scripture
-   promptScripture(initialScripture);
+   promptScripture(initialScripture, (sizeof(initialScripture) / sizeof(initialScripture[0])));
    // print new scripture to screen
-   displayScripture(initialScripture);
+   displayScripture(initialScripture, (sizeof(initialScripture) / sizeof(initialScripture[0])));
 
    return 0;
 }
@@ -51,22 +45,28 @@ int main()
 /**********************************************************************
  * PROMPT USER FOR SCRIPTURE
  * Ask the user to provide a scripture
- * @param newScripture [Scripture]
+ * @param scripture [Scripture]
  ***********************************************************************/
-void promptScripture(Scripture & newScripture)
+void promptScripture(Scripture scripture[], int size)
 {
-   // prompt for book
-   cout << "Book: ";
-   // update book
-   getline(cin, newScripture.book);
-   // prompt for chapter
-   cout << "Chapter: ";
-   // update chapter
-   cin >> newScripture.chapter;
-   // prompt for verse
-   cout << "Verse: ";
-   // update verse
-   cin >> newScripture.verse;
+   for(int i = 0; i < size; i++)
+   {
+      // prompt for book
+      cout << "Book: ";
+      cin.ignore();
+      // update book
+      getline(cin, scripture[i].book);
+      // prompt for chapter
+      cout << "Chapter: ";
+      // update chapter
+      cin >> scripture[i].chapter;
+      // prompt for verse
+      cout << "Verse: ";
+      // update verse
+      cin >> scripture[i].verse;
+   }
+
+   cout << endl;
 
    return;
 }
@@ -74,17 +74,20 @@ void promptScripture(Scripture & newScripture)
 /**********************************************************************
  * DISPLAY SCRIPTURE ON SCREEN
  * Receive a scripture as a parameter and print it on screen
- * @param passedScripture [Scripture]
+ * @param scripture [Scripture]
  ***********************************************************************/
-void displayScripture(Scripture & passedScripture)
+void displayScripture(Scripture scripture[], int size)
 {
-   // print scripture to screen
-   cout << passedScripture.book
-        << ' '
-        << passedScripture.chapter
-        << ':'
-        << passedScripture.verse
-        << endl;
+   for(int i = 0; i < size; i++)
+   {
+      // print scripture to screen
+      cout << scripture[i].book
+           << ' '
+           << scripture[i].chapter
+           << ':'
+           << scripture[i].verse
+           << endl;
+   }
 
    return;
 }
