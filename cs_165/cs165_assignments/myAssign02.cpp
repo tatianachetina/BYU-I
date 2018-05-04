@@ -27,27 +27,28 @@ struct AccessRecord
 };
 
 // prototypes
-void promptForFilename(AccessRecord & filename);
+string promptForFilename();
 
-void readFile()
+void readAccessRecords(string logFile)
 {
-   // declare the input stream
-   ifstream fin("number.txt");
-
+   // // open the input stream to fileName
+   ifstream fin(logFile.c_str()); // convert to c-string
+   // // check for read errors
    if (fin.fail())
    {
+      cout << "invalid file\n";
       return;
    }
 
-   // read the data
+   // word(s)
    string data;
-   
-   fin >> data;
-   
-   // close the stream
-   fin.close();
-   
-   return;
+
+   // loop through file until end
+   while (fin >> data)
+   {
+      cout << data << endl;
+   }
+
 }
 
 /***********************************************************************
@@ -59,16 +60,11 @@ void readFile()
  ************************************************************************/
 int main()
 {
-   // user log data
-   AccessRecord logData;
+   // get the log file name
+   string logFile = promptForFilename();
 
-   promptForFilename(logData);
-
-   // cout << "filename: " << logData.filename << endl; // 86
-
-   // string data = readFile(logData.filename);
-
-   // cout << data;
+   // read access records
+   readAccessRecords(logFile);
 
    return 0;
 }
@@ -76,13 +72,18 @@ int main()
 /**
  * PROMPT FOR FILENAME
  * Get the location of the user access records
- *    INPUT: filename [AccessRecord]
+ *    INPUT: filename [string]
  */
-void promptForFilename(AccessRecord & filename)
+string promptForFilename()
 {
    // prompt user for location of the user access records
    cout << "Enter the access record file: ";
-   // update AccessRecord.filename with location
-   cin >> filename.filename;
-}
 
+   // log filename
+   string filename;
+
+   // update filename
+   cin >> filename;
+
+   return filename;
+}
