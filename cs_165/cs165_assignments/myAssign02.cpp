@@ -165,7 +165,10 @@ void promptForStartAndEndTimes(UserData & times)
  ************************************************************************/
 void displayAccessRecords(AccessRecord logRecords[], UserData & userData)
 {
-   cout << endl << "The following records match your criteria:" << endl << endl;
+   cout << endl
+        << "The following records match your criteria:"
+        << endl
+        << endl;
 
    // header
    cout << setw(15) << "Timestamp"
