@@ -13,7 +13,7 @@
 using namespace std;
 
 // prototypes
-int promptForNumber() throw(string);
+int promptForNumber();
 // void displayNumber(const int * number);
 
 /**********************************************************************
@@ -23,39 +23,28 @@ int promptForNumber() throw(string);
 int main()
 {
 
-   try
-   {
-      int number = promptForNumber();
-      int * pNumber = &number;
+   int number = promptForNumber();
 
-      cout << "The number is " << number << '.' << endl;
-   }
-   catch (string text)
-   {
-      cout << "Error: " << text;
-   }
+   cout << "The number is " << number << '.' << endl;
 
    return 0;
 }
 
-int promptForNumber() throw(string)
+int promptForNumber()
 {
    int number;
 
    cout << "Enter a number: ";
    cin >> number;
 
-   if (number < 0)
+   while (cin.fail())
    {
-      throw string("The number cannot be negative.\n");
-   }
-   else if (number > 100)
-   {
-      throw string("The number cannot be greater than 100.\n");
-   }
-   else if (number % 2 == 1)
-   {
-      throw string("The number cannot be odd.\n");
+      cin.clear();
+      // skip over up to 256 characters
+      // or until a newline char '\n' is encountered
+      cin.ignore(256, '\n');
+      cout << "Invalid input." << endl << "Enter a number: ";
+      cin >> number;
    }
 
    return number;
