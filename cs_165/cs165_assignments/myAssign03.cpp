@@ -45,16 +45,17 @@ struct AccessRecord
 struct UserData
 {
    string sourceFile;
-   int numRecords;
    long startTime;
    long endTime;
 };
 
 // prototypes
 void promptForFilename(UserData & file);
-void readAccessRecords(AccessRecord logRecords[], UserData & fileSize);
+void parseFile(UserData & userData);
+void parseLine(string line,
+               AccessRecord logRecords[],
+               int recordNumber) throw(string);
 void promptForStartAndEndTimes(UserData & times);
-void displayAccessRecords(AccessRecord logRecords[], UserData & userData);
 
 /***********************************************************************
  * MAIN
@@ -68,43 +69,28 @@ int main()
 {
    // new instance of UserData
    UserData input;
-   // new instance of AccessRecord: log records
-   AccessRecord logRecords[MAX_NUM_RECORDS];
 
    // get the source file name
    promptForFilename(input);
    // read access records from source file
-   readAccessRecords(logRecords, input);
+   parseFile(input);
    // get start/end times
    promptForStartAndEndTimes(input);
    // display matched records on screen
-   displayAccessRecords(logRecords, input);
+   // displayAccessRecords(logRecords, input);
 
    return 0;
 }
 
-/***********************************************************************
- * PROMPT FOR FILENAME
- * Get the source filename from the user. The file that contains the user
- * logs.
- *    OUTPUT: sourceFile [string]
- ************************************************************************/
 void promptForFilename(UserData & file)
 {
    cout << "Enter the access record file: ";
    cin >> file.sourceFile;
-   cout << endl;
 
    return;
 }
 
-/***********************************************************************
- * READ ACCESS RECORDS
- * Read the data from the source file and build an array of records.
- *    INPUT: sourceFile [string]
- *    OUTPUT: logRecords [array]
- ************************************************************************/
-void readAccessRecords(AccessRecord logRecords[], UserData & userData)
+void parseFile(UserData & userData)
 {
    // number of lines in file
    int lineNumber = 0;
@@ -121,21 +107,26 @@ void readAccessRecords(AccessRecord logRecords[], UserData & userData)
       return;
    }
 
-   // read content to the end of the file
-   while (!fin.eof())
+   string line;
+
+   // read content to the end of the file one line at a time
+   while (getline(fin, line))
    {
-      // build an array of records
-      fin >> logRecords[lineNumber].filename
-          >> logRecords[lineNumber].username
-          >> logRecords[lineNumber].timestamp;
+      // fin.ignore(256, '\n');
+      AccessRecord logRecords[MAX_NUM_RECORDS];
+
+      try
+      {
+         parseLine(line, logRecords, lineNumber);
+      }
+      catch (string text)
+      {
+         cout << "Error parsing line: " << text << endl;
+      }
 
       // increment the count so we know how many records there are
       lineNumber++;
    }
-
-   // update structure with number of user records
-   // minus 1 since array is zero-indexed
-   userData.numRecords = lineNumber - 1;
 
    // close the read file
    fin.close();
@@ -143,57 +134,31 @@ void readAccessRecords(AccessRecord logRecords[], UserData & userData)
    return;
 }
 
-/***********************************************************************
- * PROMPT FOR START AND END TIMES
- * Get the start and end times from the user. Used to get a range of logs.
- *    OUTPUT: input.startTime [long]
- *            input.endTime [long]
- ************************************************************************/
+void parseLine(string line,
+               AccessRecord logRecords[],
+               int recordNumber) throw(string)
+{
+
+   stringstream buffer(line);
+
+   buffer >> logRecords[recordNumber].filename
+          >> logRecords[recordNumber].username
+          >> logRecords[recordNumber].timestamp;
+
+   if (logRecords[recordNumber].timestamp < 1000000000 ||
+       logRecords[recordNumber].timestamp > 10000000000)
+   {
+      throw line;
+   }
+
+}
+
 void promptForStartAndEndTimes(UserData & times)
 {
-   cout << "Enter the start time: ";
+   cout << "\nEnter the start time: ";
    cin >> times.startTime;
    cout << "Enter the end time: ";
    cin >> times.endTime;
-
-   return;
-}
-
-/***********************************************************************
- * DISPLAY ACCESS RECORDS
- * Display a table of access records within a given time range.
- *    INPUT: input [struct]
- *           logRecords [array]
- ************************************************************************/
-void displayAccessRecords(AccessRecord logRecords[], UserData & userData)
-{
-   cout << endl
-        << "The following records match your criteria:"
-        << endl
-        << endl;
-
-   // header
-   cout << setw(15) << "Timestamp"
-        << setw(20) << "File"
-        << setw(20) << "User" 
-        << endl;
-   // separator
-   cout << "--------------- ------------------- -------------------" << endl;
-
-   // write each record to the screen
-   for (int i = 0; i < userData.numRecords; i++)
-   {
-      // only if they're within the specified time range
-      if (logRecords[i].timestamp >= userData.startTime &&
-          logRecords[i].timestamp <= userData.endTime)
-      {
-         cout << setw(15) << logRecords[i].timestamp
-              << setw(20) << logRecords[i].filename
-              << setw(20) << logRecords[i].username << endl;
-      }
-   }
-
-   cout << "End of records\n";
 
    return;
 }
