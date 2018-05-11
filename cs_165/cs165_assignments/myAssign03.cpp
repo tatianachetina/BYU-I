@@ -21,11 +21,12 @@
 *    worked for me
 ************************************************************************/
 
-#include <cassert>
-#include <fstream>   // file i/o
-#include <iomanip>   // we will use setw() in this example
-#include <iostream>
-#include <string>    // to use string class
+#include <cassert>  // assert lib
+#include <iostream> // console in/out statements (cin/cout)
+#include <iomanip>  // we will use setw() in this example
+#include <fstream>  // file in/out statements (fin/fout)
+#include <string>   // to use string class
+#include <sstream>  // used to parse a line
 using namespace std;
 
 // defines and consts
