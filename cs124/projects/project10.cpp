@@ -1,6 +1,6 @@
 /***********************************************************************
 * Program:
-*    Project 10, Calendar
+*    Project 10, Mad Lib Pt 2
 *    Brother Schwieder, CS124
 * Author:
 *    Scott Currell

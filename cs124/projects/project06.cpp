@@ -5,7 +5,8 @@
 * Author:
 *    Scott Currell
 * Summary: 
-*    Write a program to put the text "Hello World" on the screen.
+*    Create a calendar for any month of any year from 1753 forward. Prompt
+*    the user for the numeric month and year to be displayed as calendar grid.
 *
 *    Estimated:  0.75 hrs   
 *    Actual:     0.1 hrs
