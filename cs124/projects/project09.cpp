@@ -1,6 +1,6 @@
 /***********************************************************************
 * Program:
-*    Project 09, Calendar
+*    Project 09, Mad Lib Pt 1
 *    Brother Schwieder, CS124
 * Author:
 *    Scott Currell
@@ -29,7 +29,6 @@ using namespace std;
 
 // use const because it will not change
 // the output of the function
-void getFile(char fileName[]);
 int readFile(const char fileName[], char wordsArray[][MAX_NUM_LETTERS]);
 void askQuestions(char word[]);
 
@@ -41,7 +40,8 @@ int main()
 {
    // fetch the filename via user prompt
    char fileName[256];
-   getFile(fileName);
+   cout << "Please enter the filename of the Mad Lib: ";
+   cin  >> fileName;
 
    // I don't know what this is for???
    cin.ignore();
@@ -53,19 +53,6 @@ int main()
    cout << "Thank you for playing.\n";
 
    return 0;
-}
-
-/**********************************************************************
- * GET FILENAME
- * Prompt the user for the name of the Mad Lib file.
- *    INPUT:   filename
- *    OUTPUT:  filename
- ***********************************************************************/
-void getFile(char fileName[])
-{
-   cout << "Please enter the filename of the Mad Lib: ";
-   cin  >> fileName;
-   return;
 }
 
 /**********************************************************************
