@@ -16,27 +16,27 @@ using namespace std;
 class Book
 {
    // member variables
-   public:
+   private:
       string title;
       string author;
 
    // member functions (methods)
    public:
-      void prompt(string &title, string &author);
+      void prompt();
+      void display();
 };
 
-/**********************************************************************
- * Function: main
- * Purpose: This is the entry point and driver for the program.
- ***********************************************************************/
+/**
+ * MAIN
+ * This is the entry point and driver for the program.
+ */
 int main()
 {
    // instantiate a Book object
    Book book;
 
-   book.prompt(book.title, book.author);
-
-   cout << "\"" << book.title << "\" by " << book.author << endl;
+   book.prompt();
+   book.display();
    
    return 0;
 }
@@ -45,12 +45,23 @@ int main()
  * BOOK :: PROMPT
  * Prompt the user for a title and author
  */
-void Book :: prompt(string &title, string &author)
+void Book :: prompt()
 {
    cout << "Title: ";
    getline(cin, title);
    cout << "Author: ";
    getline(cin, author);
+
+   return;
+}
+
+/**
+ * BOOK :: DISPLAY
+ * Display the results from user input
+ */
+void Book :: display()
+{
+   cout << "\"" << title << "\" by " << author << endl;
 
    return;
 }
