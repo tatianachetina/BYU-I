@@ -25,18 +25,6 @@ class Book
       void prompt(string &title, string &author);
 };
 
-// prototypes
-
-void Book :: prompt(string &title, string &author)
-{
-   cout << "Title: ";
-   getline(cin, title);
-   cout << "Author: ";
-   getline(cin, author);
-
-   return;
-}
-
 /**********************************************************************
  * Function: main
  * Purpose: This is the entry point and driver for the program.
@@ -51,4 +39,18 @@ int main()
    cout << "\"" << book.title << "\" by " << book.author << endl;
    
    return 0;
+}
+
+/**
+ * BOOK :: PROMPT
+ * Prompt the user for a title and author
+ */
+void Book :: prompt(string &title, string &author)
+{
+   cout << "Title: ";
+   getline(cin, title);
+   cout << "Author: ";
+   getline(cin, author);
+
+   return;
 }
