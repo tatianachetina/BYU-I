@@ -1,3 +1,9 @@
+/*****************************************************************************
+ * SANDBOX
+ * This file is for test purposes only. Used to practice new concepts,
+ * experiment, and write code samples.
+ ****************************************************************************/
+
 #include <iostream>
 #include <string>
 #include <cassert>
@@ -11,8 +17,7 @@ int countLetters(string dnaSequence, char words[][11], int numRelatives);
 
 /**
  * MAIN
- * Determine the number of given letters are in a given text string.
- *    INPUT: letter (from user), text (string from user)
+ * Driver program
  */
 int main()
 {
