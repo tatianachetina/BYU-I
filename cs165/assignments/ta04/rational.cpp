@@ -5,9 +5,6 @@
  ***************************************************************/
 
 #include "rational.h"
-#include <cassert>
-#include <iostream>
-using namespace std;
 
 // put your method bodies here
 void Rational :: prompt()

@@ -6,6 +6,10 @@
 #ifndef RATIONAL_H
 #define RATIONAL_H
 
+#include <iostream>
+#include <string>
+using namespace std;
+
 // put your class definition here
 class Rational
 {
