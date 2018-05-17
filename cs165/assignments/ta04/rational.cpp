@@ -5,7 +5,7 @@
  ***************************************************************/
 
 #include "rational.h"
-
+#include <cassert>
 #include <iostream>
 using namespace std;
 
@@ -52,16 +52,19 @@ void Rational :: reduce()
 {
    // Reduces rational numbers to their most basic equivalent form (e.g., 2/6
    // becomes 1/3).
-   int topFactors[100];
+   int topFactors[10];
    int topSize = 0;
-   int bottomFactors[100];
+   int bottomFactors[10];
    int bottomSize = 0;
 
    for (int i = 0; i < top; i++)
    {
-      if (top % i == 0)
+      assert(top > 0); // top num is positive
+      if (top % i + 1 == 0)
       {
-         topFactors[topSize] = i;
+         assert(top % i + 1 == 0); // top num equls 0
+         topFactors[topSize] = i + 1;
+         assert(topFactors[topSize]); // num in array exists
          topSize++;
       }
    }
