@@ -21,8 +21,6 @@ int main()
    // Call your display functions here
    rational.display();
    rational.displayDecimal();
-   rational.multiplyBy();
-   rational.reduce();
 
    return 0;
 }

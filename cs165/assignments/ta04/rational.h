@@ -17,8 +17,6 @@ class Rational
       void prompt();
       void display();
       void displayDecimal();
-      void multiplyBy();
-      void reduce();
 };
 
 #endif
