@@ -5,9 +5,6 @@
  ***************************************************************/
 
 #include "rational.h"
-#include <cassert>
-#include <iostream>
-using namespace std;
 
 // put your method bodies here
 void Rational :: prompt()
@@ -20,13 +17,12 @@ void Rational :: prompt()
 
 void Rational :: display()
 {
-   if(top > bottom && top % bottom != 0)
+   // Change your display function so that if the value is an improper
+   // fraction (larger on top than bottom), it displays it as a mixed
+   // number, such as: "1 1/4", rather than "5/4".
+   if(top > bottom)
    {
       cout << top / bottom << ' ' << top % bottom << '/' << bottom << endl;
-   }
-   else if(top > bottom)
-   {
-      cout << top / bottom << endl;
    }
    else
    {
@@ -41,37 +37,43 @@ void Rational :: displayDecimal()
    cout << fraction << endl;
 }
 
+/**
+ * Write a multiplyBy function that accepts another rational number and
+ * changes the value of the current object (multiply the two numerators
+ * to get the new numerator and the two denominators to get the new
+ * denominator). Modify your main function to demonstrate it.
+ */
 void Rational :: multiplyBy()
 {
-   // Accepts another rational number and changes the value of the current
-   // object (multiply the two numerators to get the new numerator and the two
-   // denominators to get the new denominator).
+   cout << "Top2: ";
+   cin >> top2;
+   cout << "Bottom2: ";
+   cin >> bottom2;
+
+   // cout << top * top2 << '/' << bottom * bottom2 << endl;
+
+   top = top * top2;
+   bottom = bottom * bottom2;
+
 }
 
+/**
+ * Create a reduce function, that reduces rational numbers to their most basic
+ * equivalent form (e.g., 2/6 becomes 1/3). Modify your main function to
+ * demonstrate it.
+ */
 void Rational :: reduce()
 {
-   // Reduces rational numbers to their most basic equivalent form (e.g., 2/6
-   // becomes 1/3).
-   int topFactors[10];
-   int topSize = 0;
-   int bottomFactors[10];
-   int bottomSize = 0;
+   int factor;
 
-   for (int i = 0; i < top; i++)
+   for (int i = 1; i < top; i++)
    {
-      assert(top > 0); // top num is positive
-      if (top % i + 1 == 0)
+      if (top % i == 0 && bottom % i == 0)
       {
-         assert(top % i + 1 == 0); // top num equls 0
-         topFactors[topSize] = i + 1;
-         assert(topFactors[topSize]); // num in array exists
-         topSize++;
+         factor = i;
       }
    }
 
-   for (int i = 0; i <= topSize; i++)
-   {
-      cout << topFactors[i] << endl;
-   }
-
+   top /= factor;
+   bottom /= factor;
 }

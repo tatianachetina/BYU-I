@@ -6,12 +6,18 @@
 #ifndef RATIONAL_H
 #define RATIONAL_H
 
+#include <iostream>
+#include <string>
+using namespace std;
+
 // put your class definition here
 class Rational
 {
    private:
       int top;
       int bottom;
+      int top2;
+      int bottom2;
 
    public:
       void prompt();

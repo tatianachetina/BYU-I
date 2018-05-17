@@ -4,16 +4,13 @@
  * Purpose: Contains the main function to test the Rational class.
  ***************************************************************/
 
-#include <iostream>
-#include <string>
-using namespace std;
-
 #include "rational.h"
 
 int main()
 {
    // Declare your Rational object here
    Rational rational;
+   Rational multiple;
 
    // Call your prompt function here
    rational.prompt();
@@ -21,8 +18,11 @@ int main()
    // Call your display functions here
    rational.display();
    rational.displayDecimal();
+   
    rational.multiplyBy();
+   rational.display();
+   
    rational.reduce();
-
+   rational.display();
    return 0;
 }
