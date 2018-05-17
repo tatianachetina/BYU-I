@@ -12,11 +12,15 @@ class Rational
    private:
       int top;
       int bottom;
+      int top2;
+      int bottom2;
 
    public:
       void prompt();
       void display();
       void displayDecimal();
+      void multiplyBy();
+      void reduce();
 };
 
 #endif

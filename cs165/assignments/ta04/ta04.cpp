@@ -14,6 +14,7 @@ int main()
 {
    // Declare your Rational object here
    Rational rational;
+   Rational multiple;
 
    // Call your prompt function here
    rational.prompt();
@@ -22,5 +23,10 @@ int main()
    rational.display();
    rational.displayDecimal();
 
+   rational.multiplyBy();
+   rational.display();
+
+   rational.reduce();
+   rational.display();
    return 0;
 }
