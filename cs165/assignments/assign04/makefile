@@ -5,7 +5,8 @@
 # Author:
 #     Scott Currell
 # Summary:
-#     Put your summary code here... 
+#     Prompt the user for a product name, description, weight, and price.
+#     Display user-specified info: advertising profile, line item, or receipt.
 ###############################################################
 
 
@@ -13,4 +14,3 @@
 # good enough for now...
 a.out : product.h product.cpp assign04.cpp
 	g++ product.cpp assign04.cpp
-
