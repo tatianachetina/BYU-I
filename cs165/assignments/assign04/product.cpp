@@ -15,22 +15,48 @@
  */
 void Product :: prompt()
 {
-   cout << "Enter name: ";
-   getline(cin, name);
-   cout << "Enter description: ";
-   getline(cin, description);
-   cout << "Enter weight: ";
-   cin >> weight;
+   
    do
    {
-      cin.clear();
-      // skip over up to 256 characters
-      // or until a newline char '\n' is encountered
-      cin.ignore(256, '\n');
+      cout << "Enter name: ";
+      getline(cin, name);
+   }
+   while(cin.fail());
+   
+   do
+   {
+      cout << "Enter description: ";
+      getline(cin, description);
+   }
+   while(cin.fail());
+   
+   do
+   {
+      if (cin.fail())
+      {
+         cin.clear();
+         // skip over up to 256 characters
+         // or until a newline char '\n' is encountered
+         cin.ignore(256, '\n');
+      }
+      cout << "Enter weight: ";
+      cin >> weight;
+   }
+   while(weight <= 0);
+
+   do
+   {
+      if (cin.fail())
+      {
+         cin.clear();
+         // skip over up to 256 characters
+         // or until a newline char '\n' is encountered
+         cin.ignore(256, '\n');
+      }
       cout << "Enter price: ";
       cin >> basePrice;
    }
-   while(basePrice <= 0 || cin.fail());
+   while(basePrice <= 0);
 }
 
 /**
@@ -47,7 +73,8 @@ float Product :: getSalesTax()
 
 /**
  * GET SHIPPING COST
- * Calculate shipping cost ($2.00 for 5lbs and under. $0.1 per each add'l lb.)
+ * Calculate shipping cost ($2.00 for 5 lbs and under. $0.1 per each
+ * additional lb.)
  * INPUT: Product [class] - name, description, weight, and price
  */
 float Product :: getShippingCost()
@@ -80,14 +107,10 @@ float Product :: getTotalPrice()
  */
 void Product :: diaplayAdvertising()
 {
+   // two decimal points
    cout.precision(2);
-   cout << name
-        << " - $"
-        << basePrice
-        << endl
-        << "("
-        << description
-        << ")\n";
+   cout << name << " - $" << basePrice << endl;
+   cout << "(" << description << ")\n";
 }
 
 /**
@@ -97,15 +120,13 @@ void Product :: diaplayAdvertising()
  */
 void Product :: diaplayInventory()
 {
+   // two decimal points
    cout.precision(2);
-   cout << '$'
-        << basePrice
-        << " - "
-        << name
-        << " - ";
+   cout << '$' << basePrice << " - " << name << " - ";
+   
+   // one decimal point
    cout.precision(1);
-   cout << weight
-        <<" lbs\n";
+   cout << weight <<" lbs\n";
 }
 
 /**
@@ -115,10 +136,12 @@ void Product :: diaplayInventory()
  */
 void Product :: diaplayReceipt()
 {
+   // two decimal points
    cout.precision(2);
-   cout << name
-        << endl
-        << "  Price:         $" << setw(8) << basePrice << endl
+   // product name
+   cout << name << endl;
+   // itemized table
+   cout << "  Price:         $" << setw(8) << basePrice << endl
         << "  Sales tax:     $" << setw(8) << getSalesTax() << endl
         << "  Shipping cost: $" << setw(8) << getShippingCost() << endl
         << "  Total:         $" << setw(8) << getTotalPrice() << endl;
