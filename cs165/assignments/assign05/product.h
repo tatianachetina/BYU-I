@@ -16,36 +16,36 @@ class Product {
    private:
       // member variables
       string name;
+      string description;
       float basePrice;
       float weight;
-      string description;
 
    public:
       // default constructor
       Product();
       // non-default constructors
       Product(string name,
+              string description,
               float basePrice,
-              float weight,
-              string description);
+              float weight);
       // member methods
       void prompt();
-      void diaplayAdvertising();
-      void diaplayInventory();
-      void diaplayReceipt();
+      void displayAdvertising();
+      void displayInventory();
+      void displayReceipt();
       // getters
       float getSalesTax();
       float getShippingCost();
       float getTotalPrice();
-      void getName();        // should these be voids?
-      void getDescription(); // should these be voids?
-      void getBasePrice();   // should these be voids?
-      void getWeight();      // should these be voids?
+      string getName();
+      string getDescription();
+      float getBasePrice();
+      float getWeight();
       // setters
-      void setName();        // should these be voids?
-      void setDescription(); // should these be voids?
-      void setBasePrice();   // should these be voids?
-      void setWeight();      // should these be voids?
+      void setName(string);
+      void setDescription(string);
+      void setBasePrice(float);
+      void setWeight(float);
 };
 
 #endif

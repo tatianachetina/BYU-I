@@ -77,40 +77,40 @@ int main()
    /////////////////////////////////////////////
    // Product Class
    /////////////////////////////////////////////
-   // cout << "*** PRODUCT ***\n";
-   // cout << "Default constructor:\n";
-   // Product theRing;
-   // theRing.displayAdvertising();
-   // cout << endl;
+   cout << "*** PRODUCT ***\n";
+   cout << "Default constructor:\n";
+   Product theRing;
+   theRing.displayAdvertising();
+   cout << endl;
 
-   // cout << "Getters/Setters:\n";
-   // theRing.setName("Ring of Power");
-   // theRing.setDescription("One Ring to bring them all and in the darkness bind them");
-   // theRing.setWeight(1);
-   // theRing.setBasePrice(999);
+   cout << "Getters/Setters:\n";
+   theRing.setName("Ring of Power");
+   theRing.setDescription("One Ring to bring them all and in the darkness bind them");
+   theRing.setWeight(1);
+   theRing.setBasePrice(999);
 
-   // cout.setf(ios::fixed);
-   // cout.setf(ios::showpoint);
-   // cout.precision(2);
+   cout.setf(ios::fixed);
+   cout.setf(ios::showpoint);
+   cout.precision(2);
 
-   // cout << "Name: " << theRing.getName() << endl;
-   // cout << "Description: " << theRing.getDescription() << endl;
-   // cout << "Weight: " << theRing.getWeight() << endl;
-   // cout << "BasePrice: " << theRing.getBasePrice() << endl;
-   // cout << endl;
+   cout << "Name: " << theRing.getName() << endl;
+   cout << "Description: " << theRing.getDescription() << endl;
+   cout << "Weight: " << theRing.getWeight() << endl;
+   cout << "BasePrice: " << theRing.getBasePrice() << endl;
+   cout << endl;
 
-   // cout << "Non-default constructor:\n";
-   // Product staff("Wizard Staff", "More than just a walking stick", 100, 10);
+   cout << "Non-default constructor:\n";
+   Product staff("Wizard Staff", "More than just a walking stick", 100, 10);
    
-   // cout << "\nAdvertising:\n";
-   // staff.displayAdvertising();
+   cout << "\nAdvertising:\n";
+   staff.displayAdvertising();
    
-   // cout << "\nInventory:\n";
-   // staff.displayInventory();
+   cout << "\nInventory:\n";
+   staff.displayInventory();
 
-   // cout << "\nReceipt:\n";
-   // staff.displayReceipt();
-   // cout << endl;
+   cout << "\nReceipt:\n";
+   staff.displayReceipt();
+   cout << endl;
 
    ////////////////////////////////////
    // Order Class

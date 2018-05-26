@@ -40,17 +40,17 @@ int main()
    if (choice == 1)
    {
       // Call your display advertising profile function here
-      product.diaplayAdvertising();
+      product.displayAdvertising();
    }
    else if (choice == 2)
    {
       // Call your display inventory line item function here
-      product.diaplayInventory();
+      product.displayInventory();
    }
    else
    {
       // Call your display receipt function here
-      product.diaplayReceipt();
+      product.displayReceipt();
    }
 
    return 0;

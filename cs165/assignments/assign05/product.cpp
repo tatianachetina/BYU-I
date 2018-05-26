@@ -5,7 +5,26 @@
  ***************************************************************/
 #include "product.h"
 
-// put your method bodies here
+// constructors
+Product :: Product()
+{
+   name        = "none";
+   description = "";
+   basePrice   = 0;
+   weight      = 0;
+}
+Product :: Product(string name,
+                   string description,
+                   float basePrice,
+                   float weight)
+{
+   setName(name);
+   setDescription(description);
+   setBasePrice(basePrice);
+   setWeight(weight);
+}
+
+// put your method bodies for the product class here
 
 /***************************************************************
  * PROMPT
@@ -104,7 +123,7 @@ float Product :: getTotalPrice()
  * Basic message: name, price, and description
  * INPUT: Product [class] - name, description, weight, and price
  ***************************************************************/
-void Product :: diaplayAdvertising()
+void Product :: displayAdvertising()
 {
    // two decimal points
    cout.precision(2);
@@ -117,7 +136,7 @@ void Product :: diaplayAdvertising()
  * Price, name, and weight
  * INPUT: Product [class] - name, description, weight, and price
  ***************************************************************/
-void Product :: diaplayInventory()
+void Product :: displayInventory()
 {
    // two decimal points
    cout.precision(2);
@@ -133,7 +152,7 @@ void Product :: diaplayInventory()
  * Itemized receipt
  * INPUT: Product [class] - name, description, weight, and price
  ***************************************************************/
-void Product :: diaplayReceipt()
+void Product :: displayReceipt()
 {
    // two decimal points
    cout.precision(2);
@@ -144,4 +163,84 @@ void Product :: diaplayReceipt()
         << "  Sales tax:     $" << setw(8) << getSalesTax() << endl
         << "  Shipping cost: $" << setw(8) << getShippingCost() << endl
         << "  Total:         $" << setw(8) << getTotalPrice() << endl;
+}
+
+/***************************************************************
+ * GET NAME
+ * Add description here
+ * INPUT: 
+ ***************************************************************/
+string Product :: getName()
+{
+   return name;
+}
+
+/***************************************************************
+ * GET DESCRIPTION
+ * Add description here
+ * INPUT: 
+ ***************************************************************/
+string Product :: getDescription()
+{
+   return description;
+}
+
+/***************************************************************
+ * GET BASE PRICE
+ * Add description here
+ * INPUT: 
+ ***************************************************************/
+float Product :: getBasePrice()
+{
+   return basePrice;
+}
+
+/***************************************************************
+ * GET WEIGHT
+ * Add description here
+ * INPUT: 
+ ***************************************************************/
+float Product :: getWeight()
+{
+   return weight;
+}
+
+/***************************************************************
+ * SET NAME
+ * Add description here
+ * INPUT: 
+ ***************************************************************/
+void Product :: setName(string name)
+{
+   this -> name = name;
+}
+
+/***************************************************************
+ * SET DESCRIPTION
+ * Add description here
+ * INPUT: 
+ ***************************************************************/
+void Product :: setDescription(string description)
+{
+   this -> description = description;
+}
+
+/***************************************************************
+ * SET BASE PRICE
+ * Add description here
+ * INPUT: 
+ ***************************************************************/
+void Product :: setBasePrice(float basePrice)
+{
+   this -> basePrice = basePrice;
+}
+
+/***************************************************************
+ * SET WEIGHT
+ * Add description here
+ * INPUT: 
+ ***************************************************************/
+void Product :: setWeight(float weight)
+{
+   this -> weight = weight;
 }
