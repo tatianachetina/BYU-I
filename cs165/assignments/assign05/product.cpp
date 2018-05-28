@@ -29,7 +29,7 @@ Product :: Product(string name,
 /***************************************************************
  * PROMPT
  * Prompt the user for book name, description, weight, and price
- * INPUT: Product [class] - name, description, weight, and price
+ * INPUT: Product [class] - name, description, weight, price
  ***************************************************************/
 void Product :: prompt()
 {
@@ -80,9 +80,9 @@ void Product :: prompt()
 /***************************************************************
  * GET SALES TAX
  * Calculate sales tax (flat 6%)
- * INPUT: Product [class] - name, description, weight, and price
+ * INPUT: Product [class] - name, description, weight, price
  ***************************************************************/
-float Product :: getSalesTax()
+float Product :: getSalesTax() const
 {
    float tax = basePrice * 0.06;
 
@@ -93,9 +93,9 @@ float Product :: getSalesTax()
  * GET SHIPPING COST
  * Calculate shipping cost ($2.00 for 5 lbs and under. $0.1 per each
  * additional lb.)
- * INPUT: Product [class] - name, description, weight, and price
+ * INPUT: Product [class] - name, description, weight, price
  ***************************************************************/
-float Product :: getShippingCost()
+float Product :: getShippingCost() const
 {
    if (weight < 5.0)
    {
@@ -109,9 +109,9 @@ float Product :: getShippingCost()
 /***************************************************************
  * GET TOTAL PRICE
  * Calculate total price (base + tax + shipping)
- * INPUT: Product [class] - name, description, weight, and price
+ * INPUT: Product [class] - name, description, weight, price
  ***************************************************************/
-float Product :: getTotalPrice()
+float Product :: getTotalPrice() const
 {
    float total = basePrice + getSalesTax() + getShippingCost();
 
@@ -121,11 +121,13 @@ float Product :: getTotalPrice()
 /***************************************************************
  * DISPLAY ADVERTISING MESSAGE
  * Basic message: name, price, and description
- * INPUT: Product [class] - name, description, weight, and price
+ * INPUT: Product [class] - name, description, weight, price
  ***************************************************************/
-void Product :: displayAdvertising()
+void Product :: displayAdvertising() const
 {
    // two decimal points
+   cout.setf(ios::fixed);
+   cout.setf(ios::showpoint);
    cout.precision(2);
    cout << name << " - $" << basePrice << endl;
    cout << "(" << description << ")\n";
@@ -134,9 +136,9 @@ void Product :: displayAdvertising()
 /***************************************************************
  * DISPLAY INVENTORY MESSAGE
  * Price, name, and weight
- * INPUT: Product [class] - name, description, weight, and price
+ * INPUT: Product [class] - name, description, weight, price
  ***************************************************************/
-void Product :: displayInventory()
+void Product :: displayInventory() const
 {
    // two decimal points
    cout.precision(2);
@@ -150,9 +152,9 @@ void Product :: displayInventory()
 /***************************************************************
  * DISPLAY RECEIPT MESSAGE
  * Itemized receipt
- * INPUT: Product [class] - name, description, weight, and price
+ * INPUT: Product [class] - name, description, weight, price
  ***************************************************************/
-void Product :: displayReceipt()
+void Product :: displayReceipt() const
 {
    // two decimal points
    cout.precision(2);
@@ -166,49 +168,50 @@ void Product :: displayReceipt()
 }
 
 /***************************************************************
- * GET NAME
- * Add description here
- * INPUT: 
+ * GET PRODUCT NAME
+ * Get the product name
+ * INPUT: Product [class] - name, description, weight, price
  ***************************************************************/
-string Product :: getName()
+string Product :: getName() const
 {
    return name;
 }
 
 /***************************************************************
- * GET DESCRIPTION
- * Add description here
- * INPUT: 
+ * GET PRODUCT DESCRIPTION
+ * Get the product description
+ * INPUT: Product [class] - name, description, weight, price
  ***************************************************************/
-string Product :: getDescription()
+string Product :: getDescription() const
 {
    return description;
 }
 
 /***************************************************************
- * GET BASE PRICE
- * Add description here
- * INPUT: 
+ * GET PRODUCT BASE PRICE
+ * Get the product base price
+ * INPUT: Product [class] - name, description, weight, price
  ***************************************************************/
-float Product :: getBasePrice()
+float Product :: getBasePrice() const
 {
    return basePrice;
 }
 
 /***************************************************************
- * GET WEIGHT
- * Add description here
- * INPUT: 
+ * GET PRODUCT WEIGHT
+ * Get the product weight
+ * INPUT: Product [class] - name, description, weight, price
  ***************************************************************/
-float Product :: getWeight()
+float Product :: getWeight() const
 {
    return weight;
 }
 
 /***************************************************************
- * SET NAME
- * Add description here
- * INPUT: 
+ * SET PRODUCT NAME
+ * Set the product name
+ * INPUT:  Product [class] - name, description, weight, and price
+ * OUTPUT: Product [class] - name
  ***************************************************************/
 void Product :: setName(string name)
 {
@@ -216,9 +219,10 @@ void Product :: setName(string name)
 }
 
 /***************************************************************
- * SET DESCRIPTION
- * Add description here
- * INPUT: 
+ * SET PRODUCT DESCRIPTION
+ * Set the product description
+ * INPUT:  Product [class] - name, description, weight, and price
+ * OUTPUT: Product [class] - description
  ***************************************************************/
 void Product :: setDescription(string description)
 {
@@ -226,9 +230,10 @@ void Product :: setDescription(string description)
 }
 
 /***************************************************************
- * SET BASE PRICE
- * Add description here
- * INPUT: 
+ * SET PRODUCT BASE PRICE
+ * Set the product base price
+ * INPUT:  Product [class] - name, description, weight, and price
+ * OUTPUT: Product [class] - basePrice
  ***************************************************************/
 void Product :: setBasePrice(float basePrice)
 {
@@ -236,9 +241,10 @@ void Product :: setBasePrice(float basePrice)
 }
 
 /***************************************************************
- * SET WEIGHT
- * Add description here
- * INPUT: 
+ * SET PRODUCT WEIGHT
+ * Set the product weight
+ * INPUT:  Product [class] - name, description, weight, and price
+ * OUTPUT: Product [class] - weight
  ***************************************************************/
 void Product :: setWeight(float weight)
 {

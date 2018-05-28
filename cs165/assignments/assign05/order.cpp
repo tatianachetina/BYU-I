@@ -22,11 +22,13 @@ Order :: Order(Product product,
 // Put your the method bodies for your order class here
 
 /***************************************************************
- * DISPLAY
- * Add description here
- * INPUT: 
+ * DISPLAY CUSTOMER INFO
+ * Display customer info (name, street, city, state, zip)
+ * INPUT: Customer [class] - name, address
+ *        Address [class] - street, city, state, zip
+ *        Product [class] - name, description, basePrice, weight
  ***************************************************************/
-void Order :: displayShippingLabel()
+void Order :: displayShippingLabel() const
 {
    cout << customer.getName() << endl
         << customer.getAddress().getStreet() << endl
@@ -34,11 +36,13 @@ void Order :: displayShippingLabel()
 }
 
 /***************************************************************
- * DISPLAY
- * Add description here
- * INPUT: 
+ * DISPLAY ORDER INFO
+ * Display order info (customer name, product name, total price)
+ * INPUT: Customer [class] - name, address
+ *        Address [class] - street, city, state, zip
+ *        Product [class] - name, description, basePrice, weight
  ***************************************************************/
-void Order :: displayInformation()
+void Order :: displayInformation() const
 {
    cout << customer.getName() << endl
         << product.getName() << endl
@@ -46,59 +50,71 @@ void Order :: displayInformation()
 }
 
 /***************************************************************
- * DISPLAY
- * Add description here
- * INPUT: 
+ * GET CUSTOMER DATA
+ * Get the customer data
+ * INPUT: Customer [class] - name, address
+ *        Address [class] - street, city, state, zip
+ *        Product [class] - name, description, basePrice, weight
  ***************************************************************/
-Customer Order :: getCustomer()
+Customer Order :: getCustomer() const
 {
    return customer;
 }
 
 /***************************************************************
- * DISPLAY
- * Add description here
- * INPUT: 
+ * GET PRODUCT DATA
+ * Get the product data
+ * INPUT: Customer [class] - name, address
+ *        Address [class] - street, city, state, zip
+ *        Product [class] - name, description, basePrice, weight
  ***************************************************************/
-Product Order :: getProduct()
+Product Order :: getProduct() const
 {
    return product;
 }
 
 /***************************************************************
- * DISPLAY
- * Add description here
- * INPUT: 
+ * GET ORDER QUANTITY
+ * Get the order quantity
+ * INPUT: Customer [class] - name, address
+ *        Address [class] - street, city, state, zip
+ *        Product [class] - name, description, basePrice, weight
  ***************************************************************/
-int Order :: getQuantity()
+int Order :: getQuantity() const
 {
    return quantity;
 }
 
 /***************************************************************
- * DISPLAY
- * Add description here
- * INPUT: 
+ * GET ADDRESS ZIP
+ * Get the address zip
+ * INPUT: Customer [class] - name, address
+ *        Address [class] - street, city, state, zip
+ *        Product [class] - name, description, basePrice, weight
  ***************************************************************/
-string Order :: getShippingZip()
+string Order :: getShippingZip() const
 {
    return customer.getAddress().getZip();
 }
 
 /***************************************************************
- * DISPLAY
- * Add description here
- * INPUT: 
+ * GET PRODUCT TOTAL PRICE
+ * Get the product total price
+ * INPUT: Customer [class] - name, address
+ *        Address [class] - street, city, state, zip
+ *        Product [class] - name, description, basePrice, weight
  ***************************************************************/
-float Order :: getTotalPrice()
+float Order :: getTotalPrice() const
 {
-   return product.getTotalPrice();
+   return product.getTotalPrice() * quantity;
 }
 
 /***************************************************************
- * DISPLAY
- * Add description here
- * INPUT: 
+ * SET CUSTOMER DATA
+ * Set the customer data
+ * INPUT: Customer [class] - name, address
+ *        Address [class] - street, city, state, zip
+ *        Product [class] - name, description, basePrice, weight
  ***************************************************************/
 void Order :: setCustomer(Customer customer)
 {
@@ -106,9 +122,11 @@ void Order :: setCustomer(Customer customer)
 }
 
 /***************************************************************
- * DISPLAY
- * Add description here
- * INPUT: 
+ * SET PRODUCT DATA
+ * Set the product data
+ * INPUT: Customer [class] - name, address
+ *        Address [class] - street, city, state, zip
+ *        Product [class] - name, description, basePrice, weight
  ***************************************************************/
 void Order :: setProduct(Product product)
 {
@@ -116,9 +134,11 @@ void Order :: setProduct(Product product)
 }
 
 /***************************************************************
- * DISPLAY
- * Add description here
- * INPUT: 
+ * SET ORDER QUANTITY
+ * Set the order quantity
+ * INPUT: Customer [class] - name, address
+ *        Address [class] - street, city, state, zip
+ *        Product [class] - name, description, basePrice, weight
  ***************************************************************/
 void Order :: setQuantity(int quantity)
 {

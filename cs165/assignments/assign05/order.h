@@ -6,11 +6,11 @@
 #ifndef ORDER_H
 #define ORDER_H
 
-#include <iostream>  // console in/out statements (cin/cout)
-#include <iomanip>   // we will use setw() in this example
-#include <string>    // to use string class
-#include "product.h"
-#include "customer.h"
+#include <iostream>   // console in/out statements (cin/cout)
+#include <iomanip>    // we will use setw() in this example
+#include <string>     // to use string class
+#include "product.h"  // Product class
+#include "customer.h" // Customer class
 using namespace std;
 
 // order details and methods
@@ -29,14 +29,14 @@ class Order {
             int quantity,
             Customer customer);
       // member methods
-      void displayShippingLabel();
-      void displayInformation();
+      void displayShippingLabel() const;
+      void displayInformation() const;
       // getters
-      Customer getCustomer();
-      Product getProduct();
-      int getQuantity();
-      string getShippingZip();
-      float getTotalPrice();
+      Customer getCustomer() const;
+      Product getProduct() const;
+      int getQuantity() const;
+      string getShippingZip() const;
+      float getTotalPrice() const;
       // setters
       void setCustomer(Customer);
       void setProduct(Product);

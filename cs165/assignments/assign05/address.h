@@ -29,12 +29,12 @@ class Address {
               string state,
               string zip);
       // member methods
-      void display();
+      void display() const;
       // getters
-      string getStreet();
-      string getCity();
-      string getState();
-      string getZip();
+      string getStreet() const;
+      string getCity() const;
+      string getState() const;
+      string getZip() const;
       // setters
       void setStreet(string);
       void setCity(string);

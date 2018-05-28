@@ -26,10 +26,10 @@ class Customer {
       Customer(string name,
                Address address);
       // member methods
-      void display();
+      void display() const;
       // getters
-      string getName();
-      Address getAddress();
+      string getName() const;
+      Address getAddress() const;
       // setters
       void setName(string);
       void setAddress(Address);

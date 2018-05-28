@@ -21,40 +21,46 @@ Customer :: Customer(string name,
 // Put the method bodies for your customer class here
 
 /***************************************************************
- * DISPLAY
- * Add description here
- * INPUT: 
+ * DISPLAY CUSTOMER AND ADDRESS
+ * Display customer info (name)
+ *         address info (street, city, state, and zip)
+ * INPUT: Customer [class] - name, address
+ *        Address [class] - street, city, state, zip
  ***************************************************************/
-void Customer :: display()
+void Customer :: display() const
 {
    cout << getName() << endl;
    address.display();
 }
 
 /***************************************************************
- * GET NAME
- * Add description here
- * INPUT: 
+ * GET CUSTOMER NAME
+ * Get the customer name
+ * INPUT: Customer [class] - name, address
+ *        Address [class] - street, city, state, zip
  ***************************************************************/
-string Customer :: getName()
+string Customer :: getName() const
 {
    return name;
 }
 
 /***************************************************************
- * GET ADDRESS
- * Add description here
- * INPUT: 
+ * GET CUSTOMER ADDRESS
+ * Get the customer address
+ * INPUT: Customer [class] - name, address
+ *        Address [class] - street, city, state, zip
  ***************************************************************/
-Address Customer :: getAddress()
+Address Customer :: getAddress() const
 {
    return address;
 }
 
 /***************************************************************
- * SET NAME
- * Add description here
- * INPUT: 
+ * SET CUSTOMER NAME
+ * Set the customer name
+ * INPUT: Customer [class] - name, address
+ *        Address [class] - street, city, state, zip
+ * OUTPUT: Customer [class] - name
  ***************************************************************/
 void Customer :: setName(string name)
 {
@@ -62,9 +68,11 @@ void Customer :: setName(string name)
 }
 
 /***************************************************************
- * SET ADDRESS
- * Add description here
- * INPUT: 
+ * SET CUSTOMER ADDRESS
+ * Set the customer address
+ * INPUT: Customer [class] - name, address
+ *        Address [class] - street, city, state, zip
+ * OUTPUT: Address [class] - street, city, state, zip
  ***************************************************************/
 void Customer :: setAddress(Address address)
 {

@@ -27,60 +27,61 @@ Address :: Address(string street,
 // Put your method bodies for the address class here
 
 /***************************************************************
- * DISPLAY
- * Add description here
- * INPUT: 
+ * DISPLAY ADDRESS
+ * Display address info (street, city, state, and zip)
+ * INPUT: Address [class] - street, city, state, zip
  ***************************************************************/
-void Address :: display()
+void Address :: display() const
 {
    cout << street << endl
         << getCity() << ", " << getState() << " " << getZip() << endl;
 }
 
 /***************************************************************
- * GET STREET
- * Add description here
- * INPUT: 
+ * GET ADDRESS STREET
+ * Get the address street
+ * INPUT: Address [class] - street, city, state, zip
  ***************************************************************/
-string Address :: getStreet()
+string Address :: getStreet() const
 {
    return street;
 }
 
 /***************************************************************
- * GET CITY
- * Add description here
- * INPUT: 
+ * GET ADDRESS CITY
+ * Get the address city
+ * INPUT: Address [class] - street, city, state, zip
  ***************************************************************/
-string Address :: getCity()
+string Address :: getCity() const
 {
    return city;
 }
 
 /***************************************************************
- * GET STATE
- * Add description here
- * INPUT: 
+ * GET ADDRESS STATE
+ * Get the address state
+ * INPUT: Address [class] - street, city, state, zip
  ***************************************************************/
-string Address :: getState()
+string Address :: getState() const
 {
    return state;
 }
 
 /***************************************************************
- * GET ZIP
- * Add description here
- * INPUT: 
+ * GET ADDRESS ZIP
+ * Get the address zip
+ * INPUT: Address [class] - street, city, state, zip
  ***************************************************************/
-string Address :: getZip()
+string Address :: getZip() const
 {
    return zip;
 }
 
 /***************************************************************
- * SET STREET
- * Add description here
- * INPUT: 
+ * SET ADDRESS STREET
+ * Set the address street
+ * INPUT:  Address [class] - street, city, state, zip
+ * OUTPUT: Address [class] - street
  ***************************************************************/
 void Address :: setStreet(string street)
 {
@@ -88,9 +89,10 @@ void Address :: setStreet(string street)
 }
 
 /***************************************************************
- * SET CITY
- * Add description here
- * INPUT: 
+ * SET ADDRESS CITY
+ * Set the address city
+ * INPUT:  Address [class] - street, city, state, zip
+ * OUTPUT: Address [class] - city
  ***************************************************************/
 void Address :: setCity(string city)
 {
@@ -98,9 +100,10 @@ void Address :: setCity(string city)
 }
 
 /***************************************************************
- * SET STATE
- * Add description here
- * INPUT: 
+ * SET ADDRESS STATE
+ * Set the address state
+ * INPUT:  Address [class] - street, city, state, zip
+ * OUTPUT: Address [class] - state
  ***************************************************************/
 void Address :: setState(string state)
 {
@@ -108,9 +111,10 @@ void Address :: setState(string state)
 }
 
 /***************************************************************
- * SET ZIP
- * Add description here
- * INPUT: 
+ * SET ADDRESS ZIP
+ * Set the address zip
+ * INPUT:  Address [class] - street, city, state, zip
+ * OUTPUT: Address [class] - zip
  ***************************************************************/
 void Address :: setZip(string zip)
 {

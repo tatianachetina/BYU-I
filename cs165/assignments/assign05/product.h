@@ -30,17 +30,17 @@ class Product {
               float weight);
       // member methods
       void prompt();
-      void displayAdvertising();
-      void displayInventory();
-      void displayReceipt();
+      void displayAdvertising() const;
+      void displayInventory() const;
+      void displayReceipt() const;
       // getters
-      float getSalesTax();
-      float getShippingCost();
-      float getTotalPrice();
-      string getName();
-      string getDescription();
-      float getBasePrice();
-      float getWeight();
+      float getSalesTax() const;
+      float getShippingCost() const;
+      float getTotalPrice() const;
+      string getName() const;
+      string getDescription() const;
+      float getBasePrice() const;
+      float getWeight() const;
       // setters
       void setName(string);
       void setDescription(string);
