@@ -17,30 +17,30 @@ using namespace std;
 class Order {
    private:
       // member variables
-      int quantity;
-      Product product;
       Customer customer;
+      Product product;
+      int quantity;
 
    public:
       // default constructor
       Order();
       // non-default constructors
-      Order(int quantity,
-            Product product,
+      Order(Product product,
+            int quantity,
             Customer customer);
       // member methods
       void displayShippingLabel();
       void displayInformation();
       // getters
-      void getProduct();     // should these be voids?
-      void getQuantity();    // should these be voids?
-      void getCustomer();    // should these be voids?
-      void getShippingZip(); // should these be voids?
-      void getTotalPrice();  // should these be voids?
+      Customer getCustomer();
+      Product getProduct();
+      int getQuantity();
+      string getShippingZip();
+      float getTotalPrice();
       // setters
-      void setProduct();     // should these be voids?
-      void setQuantity();    // should these be voids?
-      void setCustomer();    // should these be voids?
+      void setCustomer(Customer);
+      void setProduct(Product);
+      void setQuantity(int);
 };
 
 #endif

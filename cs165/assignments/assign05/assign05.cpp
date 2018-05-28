@@ -115,34 +115,34 @@ int main()
    ////////////////////////////////////
    // Order Class
    ////////////////////////////////////
-   // cout << "*** ORDER ***\n";
-   // cout << "Default constructor:\n";
-   // Order orderRing;
-   // orderRing.displayInformation();
-   // cout << endl;
+   cout << "*** ORDER ***\n";
+   cout << "Default constructor:\n";
+   Order orderRing;
+   orderRing.displayInformation();
+   cout << endl;
 
-   // cout << "Getters/Setters:\n";
-   // orderRing.setProduct(theRing);
-   // orderRing.setQuantity(1);
-   // orderRing.setCustomer(frodo);
+   cout << "Getters/Setters:\n";
+   orderRing.setProduct(theRing);
+   orderRing.setQuantity(1);
+   orderRing.setCustomer(frodo);
 
-   // cout << "Product:\n";
-   // orderRing.getProduct().displayReceipt();
-   // cout << "Quantity: " << orderRing.getQuantity() << endl;
-   // cout << "Customer:\n";
-   // orderRing.getCustomer().display();
-   // cout << "Shipping Zip: " << orderRing.getShippingZip() << endl;
-   // cout << "TotalPrice: " << orderRing.getTotalPrice() << endl;
-   // cout << endl;
+   cout << "Product:\n";
+   orderRing.getProduct().displayReceipt();
+   cout << "Quantity: " << orderRing.getQuantity() << endl;
+   cout << "Customer:\n";
+   orderRing.getCustomer().display();
+   cout << "Shipping Zip: " << orderRing.getShippingZip() << endl;
+   cout << "TotalPrice: " << orderRing.getTotalPrice() << endl;
+   cout << endl;
 
-   // cout << "Non-default constructor:\n";
-   // Order orderStaff(staff, 2, gandalf);
+   cout << "Non-default constructor:\n";
+   Order orderStaff(staff, 2, gandalf);
 
-   // cout << "Display Shipping Label:\n";
-   // orderStaff.displayShippingLabel();
+   cout << "Display Shipping Label:\n";
+   orderStaff.displayShippingLabel();
 
-   // cout << "\nDisplay Information:\n";
-   // orderStaff.displayInformation();
+   cout << "\nDisplay Information:\n";
+   orderStaff.displayInformation();
 
-   // return 0;
+   return 0;
 }

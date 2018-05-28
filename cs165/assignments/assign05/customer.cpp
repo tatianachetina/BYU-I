@@ -9,7 +9,7 @@
 Customer :: Customer()
 {
    name    = "unspecified";
-   address = Address(); // the address's default constructor
+   // address = Address(); // the address's default constructor
 }
 Customer :: Customer(string name,
                      Address address)
