@@ -5,7 +5,9 @@
 # Author:
 #     Scott Currell
 # Summary:
-#     Put your summary code here... 
+#     eCommerce product inventory. Collect customer, address, product, and
+# 		order data. Print that data to the screen to verify classes function
+#		as expected.
 ###############################################################
 
 
