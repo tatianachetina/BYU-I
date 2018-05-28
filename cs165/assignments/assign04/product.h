@@ -25,9 +25,9 @@ class Product {
       float getSalesTax();
       float getShippingCost();
       float getTotalPrice();
-      void diaplayAdvertising();
-      void diaplayInventory();
-      void diaplayReceipt();
+      void displayAdvertising();
+      void displayInventory();
+      void displayReceipt();
 };
 
 #endif

@@ -105,7 +105,7 @@ float Product :: getTotalPrice()
  * Basic message: name, price, and description
  * INPUT: Product [class] - name, description, weight, and price
  */
-void Product :: diaplayAdvertising()
+void Product :: displayAdvertising()
 {
    // two decimal points
    cout.precision(2);
@@ -118,7 +118,7 @@ void Product :: diaplayAdvertising()
  * Price, name, and weight
  * INPUT: Product [class] - name, description, weight, and price
  */
-void Product :: diaplayInventory()
+void Product :: displayInventory()
 {
    // two decimal points
    cout.precision(2);
@@ -134,7 +134,7 @@ void Product :: diaplayInventory()
  * Itemized receipt
  * INPUT: Product [class] - name, description, weight, and price
  */
-void Product :: diaplayReceipt()
+void Product :: displayReceipt()
 {
    // two decimal points
    cout.precision(2);
