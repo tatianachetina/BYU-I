@@ -1,9 +1,9 @@
 ###############################################################
 # Program:
 #     Milestone 06, Moon Lander
-#     Brother {Burton, Falin, Ercanbrack, Comeau}, CS165
+#     Brother Walker, CS165
 # Author:
-#     your name here
+#     Scott Currell
 # Summary:
 #     Put your summary code here... 
 # Above and Beyond
@@ -18,8 +18,8 @@ LFLAGS = -lglut -lGLU -lGL
 ###############################################################
 # Build the main Moon Lander game
 ###############################################################
-a.out: driver.o ground.o game.o uiInteract.o uiDraw.o point.o
-	g++ driver.o ground.o game.o uiInteract.o uiDraw.o point.o $(LFLAGS)
+a.out: driver.o ground.o game.o uiInteract.o uiDraw.o point.o lander.o
+	g++ driver.o ground.o game.o uiInteract.o uiDraw.o point.o lander.o $(LFLAGS)
 	tar -j -cf moonLander.tar makefile *.h *.cpp
 
 ###############################################################
@@ -53,7 +53,11 @@ driver.o: driver.cpp game.h uiInteract.h
 #
 # Then, don't forget to add them to the dependecy list for a.out above.
 #######################################################################
+lander.o: lander.cpp
+	g++ -c lander.cpp
 
+# velocity.o: velocity.cpp
+# 	g++ -c velocity.cpp
 
 ###############################################################
 # General rules
