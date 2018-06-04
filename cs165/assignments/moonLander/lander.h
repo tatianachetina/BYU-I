@@ -22,14 +22,22 @@ class Lander
 {
 private:
    Point position;
+
 public:
    Lander()
+   {
+
+   }
+
    Point getPoint();
    Velocity getVelocity();
+
+   int getFuel();
+   
    bool isAlive();
    bool isLanded();
-   int getFuel();
    bool canThrust();
+   
    void setLanded(bool);
    void setAlive(bool);
    void setFuel(int);
