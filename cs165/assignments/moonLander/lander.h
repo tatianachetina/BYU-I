@@ -12,7 +12,10 @@
 #ifndef LANDER_H
 #define LANDER_H
 
-#include <iostream>
+#include "point.h"
+#include "velocity.h"
+#include "uiDraw.h"
+#include "uiInteract.h"
 
 /*********************************************
  * LANDER
@@ -21,7 +24,7 @@
 class Lander
 {
 private:
-   Point position;
+   Point lander;
 
 public:
    Lander()
