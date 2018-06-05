@@ -37,4 +37,3 @@ void Robot :: display() const
    position.display();
    cout << " - Energy: " << getEnergy();
 }
-

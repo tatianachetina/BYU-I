@@ -41,9 +41,6 @@ void Point :: setY(int y)
    this->y = y;
 }
 
-
-
-
 /******************************************
  * Function: display
  * Purpose: Displays the point

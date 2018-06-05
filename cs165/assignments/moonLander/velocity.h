@@ -8,11 +8,10 @@
  *    the location and the bounds.
  ************************************************************************/
 
-
 #ifndef VELOCITY_H
 #define VELOCITY_H
 
-#include <iostream>
+#include "point.h"
 
 /*********************************************
  * VELOCITY
@@ -21,13 +20,25 @@
 class Velocity
 {
 private:
-   Point position;
-public:
-   void draw();
-};
+   float x;
+   float y;
 
-// stream I/O useful for debugging
-std::ostream & operator << (std::ostream & out, const Velocity & pt);
-std::istream & operator >> (std::istream & in,        Velocity & pt);
+public:
+   // constructors
+   Velocity()
+   {
+
+   }
+
+   Velocity(float x, float y)
+   {
+
+   }
+
+   float getDx();
+   float getDy();
+   void setDx(float);
+   void setDy(float);
+};
 
 #endif // VELOCITY_H
