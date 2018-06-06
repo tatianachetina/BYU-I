@@ -1,0 +1,36 @@
+/***********************************************************************
+ * Implementation File:
+ *    VELOCITY : A class representing the lunar landscape
+ * Author:
+ *    Scott Currell
+ * Summary:
+ *    Everything you needed to know about the velocity but were afraid to ask
+ ************************************************************************/
+
+#include "velocity.h"
+// using namespace std;
+
+/********************************************
+ * VELOCITY :: CONSTRUCTOR
+ ********************************************/
+   // getters
+   float Velocity :: getDx()
+   {
+      return 0.0;
+   }
+
+   float Velocity :: getDy()
+   {
+      return 0.0;
+   }
+
+   // setters
+   void Velocity :: setDx(float x)
+   {
+
+   }
+
+   void Velocity :: setDy(float y)
+   {
+
+   }
