@@ -8,7 +8,7 @@
  ************************************************************************/
 
 #include "velocity.h"
-using namespace std;
+// using namespace std;
 
 /********************************************
  * VELOCITY :: CONSTRUCTOR
