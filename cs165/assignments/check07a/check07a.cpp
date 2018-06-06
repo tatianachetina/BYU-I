@@ -13,8 +13,6 @@ using namespace std;
  * Purpose: Tests the Ice Cream class
  *****************************************/
 
-float IceCream :: salesTax = 0.06;
-
 int main()
 {
    IceCream iceCream1;

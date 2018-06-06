@@ -8,6 +8,9 @@
 #include <iomanip>
 using namespace std;
 
+// static var
+float IceCream :: salesTax = 0.06;
+
 /***********************************
  * Constructors
  ***********************************/
