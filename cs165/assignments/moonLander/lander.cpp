@@ -8,11 +8,16 @@
  ************************************************************************/
 
 #include "lander.h"
-using namespace std;
+// using namespace std;
 
 /********************************************
  * LANDER :: CONSTRUCTOR
  ********************************************/
+   // Lander :: Lander()
+   // {
+      
+   // }
+
    // setters
    void Lander :: setLanded(bool landed)
    {
@@ -32,7 +37,7 @@ using namespace std;
    // methods
    bool Lander :: isAlive()
    {
-      return false;
+      return true;
    }
 
    bool Lander :: isLanded()
@@ -42,7 +47,7 @@ using namespace std;
 
    bool Lander :: canThrust()
    {
-      return false;
+      return true;
    }
    
    void Lander :: applyGravity(float gravity)
@@ -72,5 +77,5 @@ using namespace std;
 
    void Lander :: draw()
    {
-
+      drawLander(landerPoint);
    }
