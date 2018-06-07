@@ -1,11 +1,10 @@
 /***********************************************************************
  * Header File:
- *    Velocity : The representation of a position on the screen
+ *    VELOCITY : The representation of a position on the screen
  * Author:
  *    Scott Currell
  * Summary:
- *    Everything we need to know about a location on the screen, including
- *    the location and the bounds.
+ *    ... add summary ...
  ************************************************************************/
 
 #ifndef VELOCITY_H

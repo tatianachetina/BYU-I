@@ -1,10 +1,10 @@
 /***********************************************************************
  * Implementation File:
- *    VELOCITY : A class representing the lunar landscape
+ *    VELOCITY : A class representing the lander's velocity
  * Author:
  *    Scott Currell
  * Summary:
- *    Everything you needed to know about the velocity but were afraid to ask
+ *    ... add summary ...
  ************************************************************************/
 
 #include "velocity.h"
