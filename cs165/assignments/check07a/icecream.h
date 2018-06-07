@@ -17,7 +17,7 @@ public:
    IceCream(std::string flavor, float price);
 
    // TODO: Add public static variable named salesTax
-   static float salesTax;
+   static float salesTax; // pg 157
 
    float getTotalPrice() const;
    void prompt();

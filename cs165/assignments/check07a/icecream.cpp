@@ -9,7 +9,7 @@
 using namespace std;
 
 // static var
-float IceCream :: salesTax = 0.06;
+float IceCream :: salesTax = 0.06; // bottom of pg 157
 
 /***********************************
  * Constructors
