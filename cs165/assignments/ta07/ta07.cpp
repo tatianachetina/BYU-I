@@ -17,6 +17,7 @@ int main()
    cin >> arraySize;
 
    // Allocate your array(s) here
+   float* pArray = new float[arraySize];
 
    // Fill your array with float values
    for(int i = 0; i < arraySize; i++) 
@@ -51,7 +52,7 @@ float getValueFromPointer(float* thePointer)
 }
 float* getMinValue(float* a, float* b)
 {
-   if()
+   if (*a < *b)
    {
       return a;
    }
