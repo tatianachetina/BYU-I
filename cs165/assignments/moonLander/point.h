@@ -1,6 +1,6 @@
 /***********************************************************************
  * Header File:
- *    Point : The representation of a position on the screen
+ *    POINT : The representation of a position on the screen
  * Author:
  *    Scott Currell
  * Summary:
