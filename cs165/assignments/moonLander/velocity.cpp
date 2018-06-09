@@ -13,24 +13,36 @@
 /********************************************
  * VELOCITY :: CONSTRUCTOR
  ********************************************/
+   Velocity :: Velocity()
+   {
+      setDx(0.0);
+      setDy(0.0);
+   }
+
+   Velocity :: Velocity(float xVelocity, float yVelocity)
+   {
+      setDx(xVelocity);
+      setDy(yVelocity);
+   }
+
    // getters
    float Velocity :: getDx()
    {
-      return 0.0;
+      return xVelocity;
    }
 
    float Velocity :: getDy()
    {
-      return 0.0;
+      return yVelocity;
    }
 
    // setters
-   void Velocity :: setDx(float x)
+   void Velocity :: setDx(float xVelocity)
    {
-
+      this -> xVelocity = xVelocity;
    }
 
-   void Velocity :: setDy(float y)
+   void Velocity :: setDy(float yVelocity)
    {
-
+      this -> yVelocity = yVelocity;
    }

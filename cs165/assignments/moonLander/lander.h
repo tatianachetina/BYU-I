@@ -11,7 +11,7 @@
 #ifndef LANDER_H
 #define LANDER_H
 
-// #include "point.h"
+#include "point.h"
 #include "uiDraw.h"
 #include "velocity.h"
 // #include "uiInteract.h"
@@ -27,21 +27,12 @@ private:
    Velocity landerVelocity;
    bool alive;
    bool landed;
-   // bool thrust;
+   bool thrust;
    int fuel;
 
 public:
    // constructors
-   Lander()
-   {
-      // setdY(1.2);
-      // setdX(5.2);
-      alive = true;
-      landed = false;
-      // bool thrust = true;
-      fuel = 500;
-   }
-   // Lander();
+   Lander();
 
    // getters
    Point getPoint() const { return landerPoint; }
@@ -50,8 +41,9 @@ public:
    int getFuel() const { return fuel; }
 
    // setters
-   void setLanded(bool);
    void setAlive(bool);
+   void setLanded(bool);
+   void setThrust(bool);
    void setFuel(int);
 
    // methods

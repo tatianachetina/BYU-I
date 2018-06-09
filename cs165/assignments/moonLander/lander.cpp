@@ -13,41 +13,49 @@
 /********************************************
  * LANDER :: CONSTRUCTOR
  ********************************************/
-   // Lander :: Lander()
-   // {
-      
-   // }
-
-   // setters
-   void Lander :: setLanded(bool landed)
+   Lander :: Lander()
    {
-
+      setAlive(true);
+      setLanded(false);
+      setThrust(true);
+      setFuel(500);
    }
 
+   // setters
    void Lander :: setAlive(bool alive)
    {
+      this -> alive = alive;
+   }
 
+   void Lander :: setLanded(bool landed)
+   {
+      this -> landed = landed;
+   }
+
+   void Lander :: setThrust(bool thrust)
+   {
+      this -> thrust = thrust;
    }
 
    void Lander :: setFuel(int fuel)
    {
-
+      this -> fuel = fuel;
    }
 
    // methods
    bool Lander :: isAlive()
    {
-      return true;
+      return alive;
    }
 
    bool Lander :: isLanded()
    {
-      return false;
+      return landed;
    }
 
    bool Lander :: canThrust()
    {
-      return true;
+      return thrust;
    }
    
    void Lander :: applyGravity(float gravity)

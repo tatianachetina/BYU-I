@@ -19,20 +19,13 @@
 class Velocity
 {
 private:
-   float x;
-   float y;
+   float xVelocity;
+   float yVelocity;
 
 public:
    // constructors
-   Velocity()
-   {
-
-   }
-
-   Velocity(float x, float y)
-   {
-
-   }
+   Velocity();
+   Velocity(float, float);
 
    float getDx();
    float getDy();
