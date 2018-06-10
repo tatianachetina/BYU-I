@@ -26,15 +26,8 @@
    }
 
    // getters
-   float Velocity :: getDx()
-   {
-      return xVelocity;
-   }
-
-   float Velocity :: getDy()
-   {
-      return yVelocity;
-   }
+   float Velocity :: getDx() const { return xVelocity; }
+   float Velocity :: getDy() const { return yVelocity; }
 
    // setters
    void Velocity :: setDx(float xVelocity)

@@ -10,7 +10,7 @@
 #ifndef VELOCITY_H
 #define VELOCITY_H
 
-#include "point.h"
+// #include "point.h"
 
 /*********************************************
  * VELOCITY
@@ -27,8 +27,11 @@ public:
    Velocity();
    Velocity(float, float);
 
-   float getDx();
-   float getDy();
+   // getters
+   float getDx() const;
+   float getDy() const;
+
+   // setters
    void setDx(float);
    void setDy(float);
 };

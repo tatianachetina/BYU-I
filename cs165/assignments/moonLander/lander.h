@@ -14,7 +14,6 @@
 #include "point.h"
 #include "uiDraw.h"
 #include "velocity.h"
-// #include "uiInteract.h"
 
 /*********************************************
  * LANDER
