@@ -92,7 +92,7 @@
    {
       if (thrust)
       {
-         landerVelocity.setDy(landerVelocity.getDy() - 0.3);
+         landerVelocity.setDy(landerVelocity.getDy() + 0.3);
          landerPoint.addY(0.3);
          fuel -= 3;
       }
