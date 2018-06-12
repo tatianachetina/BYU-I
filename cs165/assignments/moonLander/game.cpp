@@ -115,11 +115,13 @@ void Game :: draw(const Interface & ui)
 
    if (lander.isLanded())
    {
+      lander.setThrust(false); // disable thrust on land
       drawText(Point(), "You have successfully landed!");
    }
    
    if (!lander.isAlive())
    {
+      lander.setThrust(false); // disable thrust on crash
       drawText(Point(), "You have crashed!");
    }
    
@@ -137,4 +139,3 @@ void Game :: draw(const Interface & ui)
    // draw ground
    ground.draw();
 }
-

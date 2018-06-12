@@ -4,7 +4,7 @@
  * Author:
  *    Scott Currell
  * Summary:
- *    ... add summary ...
+ *    Set lander physics: left, right, and up directions and velocities. 
  ************************************************************************/
 
 #include "velocity.h"
@@ -26,15 +26,27 @@
    }
 
    // getters
+   /**
+    * GET X DIRECTION
+    */
    float Velocity :: getDx() const { return xVelocity; }
+   /**
+    * GET Y DIRECTION
+    */
    float Velocity :: getDy() const { return yVelocity; }
 
    // setters
+   /**
+    * SET X DIRECTION
+    */
    void Velocity :: setDx(float xVelocity)
    {
       this -> xVelocity = xVelocity;
    }
 
+   /**
+    * SET Y DIRECTION
+    */
    void Velocity :: setDy(float yVelocity)
    {
       this -> yVelocity = yVelocity;
