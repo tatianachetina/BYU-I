@@ -1,15 +1,17 @@
 ###############################################################
 # Program:
-#     Milestone 06, Moon Lander
+#     Project 07, Moon Lander
 #     Brother Walker, CS165
 # Author:
 #     Scott Currell
 # Summary:
-#     Put your summary code here... 
+#     Land a lunar module on the surface of the moon. Lander only has 500
+#		units of fuel. Cannot land with a velocity greater than 3 px per frame
+#		in any direction. Horizontal thrust consumes 1 unit of fuel and moves
+#		the lander 0.1 px, vertical thrust consumes 3 units of fuel and moves
+#		the lander 0.3 px. 
 # Above and Beyond
-#     When you submit your final project (not for milestones),
-#     list anything here that you did to go above and beyond
-#     the base requirements for your project.
+#     Listed velocity stats at top right of screen.
 ###############################################################
 
 
@@ -42,7 +44,7 @@ point.o: point.cpp point.h
 ground.o: ground.cpp ground.h
 	g++ -c ground.cpp
 
-game.o: game.h game.cpp uiDraw.h uiInteract.h point.h ground.h
+game.o: game.h game.cpp uiDraw.h uiInteract.h point.h ground.h velocity.h
 	g++ -c game.cpp
 
 driver.o: driver.cpp game.h uiInteract.h
