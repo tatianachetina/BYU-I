@@ -1,10 +1,11 @@
 /***********************************************************************
  * Header File:
- *    VELOCITY : The representation of a position on the screen
+ *    VELOCITY : A representation of the lander's velocity
  * Author:
  *    Scott Currell
  * Summary:
- *    ... add summary ...
+ *    Everything wee need to know about the lander's velocity: how fast it's
+ *    moving in along the X and Y axes.
  ************************************************************************/
 
 #ifndef VELOCITY_H

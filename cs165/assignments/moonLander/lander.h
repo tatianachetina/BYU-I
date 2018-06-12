@@ -1,11 +1,12 @@
 /***********************************************************************
  * Header File:
- *    Lander : The representation of a position on the screen
+ *    LANDER : A representation of lander's state
  * Author:
  *    Scott Currell
  * Summary:
- *    Everything we need to know about a location on the screen, including
- *    the location and the bounds.
+ *    Everything we need to know about the lander's state: is it alive, has
+ *    it crashed, how much fuel does it have, can it thrust, make it thrust,
+ *    apply gravity, draw the lander on screen, etc.
  ************************************************************************/
 
 #ifndef LANDER_H

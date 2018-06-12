@@ -17,6 +17,7 @@
 #include "point.h"
 #include "ground.h"
 #include "lander.h"
+#include "velocity.h"
 
 /******************************************
  * GAME :: JUST LANDED
@@ -135,6 +136,34 @@ void Game :: draw(const Interface & ui)
    fuelLocation.setY(topLeft.getY() - 5);
    
    drawNumber(fuelLocation, lander.getFuel());
+
+   // Velocity Label Vert
+   Point statVertVelocityLabel;
+   statVertVelocityLabel.setX(topLeft.getX() + 305);
+   statVertVelocityLabel.setY(topLeft.getY() - 15);
+
+   drawText(statVertVelocityLabel, "Velocity (V): ");
+
+   // Velocity Vert Value
+   Point statVertVelocity;
+   statVertVelocity.setX(topLeft.getX() + 385);
+   statVertVelocity.setY(topLeft.getY() - 5);
+
+   drawNumber(statVertVelocity, fabs(lander.getVelocity().getDy()));
+
+   // Velocity Label Horiz
+   Point statHorizVelocityLabel;
+   statHorizVelocityLabel.setX(topLeft.getX() + 305);
+   statHorizVelocityLabel.setY(topLeft.getY() - 30);
+
+   drawText(statHorizVelocityLabel, "Velocity (H): ");
+
+   // Velocity Horiz Value
+   Point statHorizVelocity;
+   statHorizVelocity.setX(topLeft.getX() + 385);
+   statHorizVelocity.setY(topLeft.getY() - 20);
+
+   drawNumber(statHorizVelocity, fabs(lander.getVelocity().getDx()));
 
    // draw ground
    ground.draw();
