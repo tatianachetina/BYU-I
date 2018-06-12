@@ -1,17 +1,17 @@
 /***********************************************************************
  * Header File:
- *    Velocity : The representation of a position on the screen
+ *    VELOCITY : A representation of the lander's velocity
  * Author:
  *    Scott Currell
  * Summary:
- *    Everything we need to know about a location on the screen, including
- *    the location and the bounds.
+ *    Everything wee need to know about the lander's velocity: how fast it's
+ *    moving in along the X and Y axes.
  ************************************************************************/
 
 #ifndef VELOCITY_H
 #define VELOCITY_H
 
-#include "point.h"
+// #include "point.h"
 
 /*********************************************
  * VELOCITY
@@ -20,23 +20,19 @@
 class Velocity
 {
 private:
-   float x;
-   float y;
+   float xVelocity;
+   float yVelocity;
 
 public:
    // constructors
-   Velocity()
-   {
+   Velocity();
+   Velocity(float, float);
 
-   }
+   // getters
+   float getDx() const;
+   float getDy() const;
 
-   Velocity(float x, float y)
-   {
-
-   }
-
-   float getDx();
-   float getDy();
+   // setters
    void setDx(float);
    void setDy(float);
 };

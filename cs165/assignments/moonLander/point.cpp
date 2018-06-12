@@ -1,11 +1,10 @@
 /***********************************************************************
  * Source File:
- *    Point : The representation of a position on the screen
+ *    POINT : The representation of a position on the screen
  * Author:
- *    Br. Helfrich
+ *    Scott Currell
  * Summary:
- *    Everything we need to know about a location on the screen, including
- *    the location and the bounds.
+ *    ... add summary ...
  ************************************************************************/
 
 #include "point.h"
@@ -64,4 +63,3 @@ std::istream & operator >> (std::istream & in, Point & pt)
 
    return in;
 }
-   
