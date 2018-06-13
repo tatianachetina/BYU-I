@@ -24,4 +24,3 @@ void Point :: promptForPoint()
    cout << "Enter y: ";
    cin >> y;
 }
-

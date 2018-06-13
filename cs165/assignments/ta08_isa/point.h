@@ -21,12 +21,11 @@ class Point
       float getY() const { return y; }
 
       // Setters
-      void setX(float x) { this->x = x; }
-      void setY(float y) { this->y = y; }
+      void setX(float x) { this -> x = x; }
+      void setY(float y) { this -> y = y; }
 
       void display() const;
       void promptForPoint();
 };
 
 #endif
-

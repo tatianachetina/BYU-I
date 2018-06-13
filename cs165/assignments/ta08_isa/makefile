@@ -10,4 +10,3 @@ circle.o: circle.cpp circle.h point.h
 
 ta08.o: ta08.cpp circle.h
 	g++ -c ta08.cpp
-
