@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include <string>
-using namespace std;
+// using namespace std;
 
 /***************************************************
  * Function: main
@@ -15,25 +15,23 @@ using namespace std;
  ***************************************************/
 int main()
 {
-   cout << "Phone:\n";
-
+   std::cout << "Phone:\n";
    // TODO: Create your Phone object here and call its promptNumber method
+   Phone phone;
+   phone.promptNumber();
 
-
-   cout << "\nPhone info:\n";
+   std::cout << "\nPhone info:\n";
    // TODO: Call your Phone's display method here
+   phone.display();
 
-
-
-   cout << "\nSmart phone:\n";
-   
+   std::cout << "\nSmart phone:\n";
    // TODO: Create your SmartPhone object here and call its prompt method
-   
+   SmartPhone smartphone;
+   smartphone.prompt();
 
-   cout << "\nPhone info:\n";
+   std::cout << "\nPhone info:\n";
    // TODO: Call your SmartHpone's display method here
-
-
+   smartphone.display();
 
    return 0;
 }
