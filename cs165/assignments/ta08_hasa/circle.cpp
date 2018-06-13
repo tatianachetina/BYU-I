@@ -5,23 +5,26 @@ using namespace std;
 
 /***********************************************************
  * Function: Circle :: display
- * Outputs a circle and its radius to the screen.
+ * Outputs a circle to the screen.
  ***********************************************************/
 void Circle :: display() const
 {
-   Point :: display();
+   center.display();
 
    cout << " - Radius: " << radius << endl;
 }
 
 /***********************************************************
  * Function: Circle :: promptForCircle
- * Prompts the user for the coordinates and radius of the circle.
+ * Prompts the user for the coordinates of the circle.
  ***********************************************************/
 void Circle :: promptForCircle()
 {
-   promptForPoint();
+   center.promptForPoint();
 
    cout << "Enter radius: ";
    cin >> radius;
 }
+
+float Circle :: getX() const { return center.getX(); }
+float Circle :: getY() const { return center.getY(); }
