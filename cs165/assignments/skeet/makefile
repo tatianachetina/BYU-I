@@ -1,9 +1,9 @@
 ###############################################################
 # Program:
 #     Milestone 08, Skeet
-#     Brother {Burton, Falin, Ercanbrack, Comeau}, CS165
+#     Brother Walker, CS165
 # Author:
-#     your name here
+#     Scott Currell
 # Summary:
 #     Put your summary code here... 
 # Above and Beyond
@@ -38,7 +38,7 @@ uiInteract.o: uiInteract.cpp uiInteract.h
 point.o: point.cpp point.h
 	g++ -c point.cpp
 
-game.o: game.cpp uiDraw.h uiInteract.h point.h rifle.h bullet.h birds.h
+game.o: game.cpp uiDraw.h uiInteract.h point.h rifle.h bullet.h bird.h
 	g++ -c game.cpp
 
 driver.o: game.h uiInteract.h driver.cpp
