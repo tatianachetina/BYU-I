@@ -31,7 +31,7 @@ struct Scripture
  * Function: display
  * Description: Displays the passed scripture.
  ***********************************************************************/
-void display(const Scripture &scripture)
+void display(const Scripture & scripture)
 {
    cout << scripture.book << " ";
    cout << scripture.chapter << ":";
