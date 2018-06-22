@@ -1,0 +1,38 @@
+Milestone:
+
+Scott, good start. Note that the getPoint/setPoint don't need to be duplicated
+in child classes. They come from the parent for free. :)
+
+
+
+
+
+Project:
+
+After looking at what was inside the tar, looks like it won't compile and
+inheritance isn't being used properly. Make sure you have a FlyingObject class
+that both Bird and Bullet inherit from.
+
+However, the tar file you submitted was corrupted or something - the process
+tool said there was an unexpected EOF in it. If you think your code should
+compile, please resubmit and email me when done.
+
+Overall Feedback:
+Grading is currently in progress; the following is generic feedback for the
+group. As the rubric stated, make sure of the following in your code:
+
+There should be a base class for FlyingObject
+
+Bullets and Birds should inherit from this base class
+
+Bullets and Birds should NOT duplicate any variables or functions that are in
+(or should be in) the base class (e.g., they should not have their own point).
+
+Game class should have a Bird *
+
+Bullet fire method should have good cohesion
+
+remember to set the bullet to alive here
+
+Use either protected or private-getter/setter approach for member variables in
+the base class.

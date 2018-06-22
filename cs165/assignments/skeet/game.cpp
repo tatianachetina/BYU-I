@@ -105,16 +105,16 @@ void Game :: advanceBird()
    else
    {
       // we have a bird, make sure it's alive
-      if (bird->isAlive())
+      if (bird -> isAlive())
       {
          // move it forward
-         bird->advance();
+         bird -> advance();
          
          // check if the bird has gone off the screen
-         if (!isOnScreen(bird->getPoint()))
+         if (!isOnScreen(bird -> getPoint()))
          {
             // We have missed the bird
-            bird->kill();
+            bird -> kill();
          }
       }
    }
@@ -161,17 +161,17 @@ void Game :: handleCollisions()
          // this bullet is alive, see if its too close
 
          // check if the bird is at this point (in case it was hit)
-         if (bird != NULL && bird->isAlive())
+         if (bird != NULL && bird -> isAlive())
          {
             // BTW, this logic could be more sophisiticated, but this will
             // get the job done for now...
-            if (fabs(bullets[i].getPoint().getX() - bird->getPoint().getX()) < CLOSE_ENOUGH
-                && fabs(bullets[i].getPoint().getY() - bird->getPoint().getY()) < CLOSE_ENOUGH)
+            if (fabs(bullets[i].getPoint().getX() - bird -> getPoint().getX()) < CLOSE_ENOUGH
+                && fabs(bullets[i].getPoint().getY() - bird -> getPoint().getY()) < CLOSE_ENOUGH)
             {
                //we have a hit!
                
                // hit the bird
-               int points = bird->hit();
+               int points = bird -> hit();
                score += points;
                
                // the bullet is dead as well
@@ -190,7 +190,7 @@ void Game :: handleCollisions()
 void Game :: cleanUpZombies()
 {
    // check for dead bird
-   if (bird != NULL && !bird->isAlive())
+   if (bird != NULL && !bird -> isAlive())
    {
       // the bird is dead, but the memory is not freed up yet
       
