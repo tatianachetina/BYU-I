@@ -1,6 +1,7 @@
 # ignore the following sub folders
 /b320
 /fdrel_225
+*/downloads
 
 # ignore sftp-config
 *.json
