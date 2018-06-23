@@ -12,17 +12,6 @@
 #include <cassert>
 
 /*****************************************************************************
- * FLYINGOBJECT : CONSTRUCTOR WITH POINT, VELOCITY
- * Initialize the flyingObject to the passed parameters
- ****************************************************************************/
-// taken from Point class. Needed?.?.
-// FlyingObject :: FlyingObject(Point point, Velocity velocity) // : x(0.0), y(0.0)// taken from Point class. Needed?.?.
-// {
-//    setPoint(point); // ??? SWC
-//    setVelocity(velocity); // ??? SWC
-// }
-
-/*****************************************************************************
  * SET POINT
  ****************************************************************************/
 void FlyingObject :: setPoint(Point point)

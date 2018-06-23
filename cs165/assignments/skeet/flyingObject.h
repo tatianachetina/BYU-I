@@ -22,15 +22,11 @@
 class FlyingObject : public Point, public Velocity
 {
    private:
-      Point point;         // base object point
-      Velocity velocity;   // base object velocity
-      bool alive;          // base state: alive/dead
+      Point point;       // base object point
+      Velocity velocity; // base object velocity
+      bool alive;        // base state: alive/dead
 
    public:
-      // constructors
-      // FlyingObject(); // ??? SWC
-      // FlyingObject(Point, Velocity); // ??? SWC
-
       // getters
       Point getPoint()        const { return point; }
       Velocity getVelocity()  const { return velocity; }
@@ -42,9 +38,9 @@ class FlyingObject : public Point, public Velocity
       void setAlive(bool);
 
       // methods
-      virtual void draw();    // ??? SWC
-      virtual void advance(); // ??? SWC
-      virtual void kill();    // ??? SWC
+      virtual void draw();
+      virtual void advance();
+      virtual void kill();
 };
 
 #endif // FLYINGOBJECT_H

@@ -135,26 +135,39 @@ Bird* Game :: createBird()
    Bird* newBird = NULL;
 
    // TODO: Fill this in
-   Point point;
-   int randomPoint = random(bottomRight.getY()*.5,topLeft.getY()*.5);
-   int randomBird  = random(1,5);
+   // Point point;
+   // int randomPoint = random(bottomRight.getY()*.5,topLeft.getY()*.5);
+   // int randomBird  = random(1,5);
 
-   point.setX(topLeft.getX());
-   point.setY(randomPoint);
+   // point.setX(topLeft.getX());
+   // point.setY(randomPoint);
 
-   if (randomBird == 1 || randomBird == 2)
-   {
-      newBird = new Bird;
-   }
-   else if (randomBird == 3)
-   {
-      newBird = new ToughBird;
-   }
-   else
-   {
-      newBird = new SacredBird;
-   }
+   // if (randomBird == 1 || randomBird == 2)
+   // {
+   //    newBird = new Bird;
+   // }
+   // else if (randomBird == 3)
+   // {
+   //    newBird = new ToughBird;
+   // }
+   // else
+   // {
+   //    newBird = new SacredBird;
+   // }
    
+   switch(random(1, 4))
+   {
+      case 1:
+         newBird = new Bird;
+         break;
+      case 2:
+         newBird = new ToughBird;
+         break;
+      case 3:
+         newBird = new SacredBird;
+         break;
+   }
+
    return newBird;
 }
 
@@ -309,4 +322,3 @@ void Game :: draw(const Interface & ui)
    drawNumber(scoreLocation, score);
 
 }
-
