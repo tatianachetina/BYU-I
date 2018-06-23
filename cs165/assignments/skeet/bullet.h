@@ -19,10 +19,10 @@
 class Bullet : public FlyingObject
 {
    public:
-       Bullet();
-       void kill();
-       void draw();
-       void fire(Point, float);
+      Bullet();
+      void kill();
+      void draw();
+      void fire(Point, float);
 };
 
 #endif // BULLET_H
