@@ -1,107 +1,118 @@
+/****************************************
+* Team Activity 09
+* Author: Br. Burton
+****************************************/
+
 #include <iostream>
 #include <string>
-
 using namespace std;
 
 class Employee
 {
-private:
-	string name;
-public:
-	string getName() const { return name; }
-	void setName(string name) { this->name = name; }
-	virtual void display()
-	{
-		cout << name << endl;
-	}
+   private:
+      string name;
+
+   public:
+      string getName() const              { return name; }
+      void setName(string name)           { this -> name = name; }
+
+      virtual void display()              { cout << name << endl; }
 };
 
 class HourlyEmployee : public Employee
 {
-private:
-	int hourlyWage;
-public:
-	int getHourlyWage() const { return hourlyWage; }
-	void setHourlyWage(int hourlyWage) { this->hourlyWage = hourlyWage; }
-	void display()
-	{
-		cout << getName() << " - $" << getHourlyWage() << "/hour";
-	}
+   private:
+      int hourlyWage;
+
+   public:
+      int getHourlyWage() const           { return hourlyWage; }
+      void setHourlyWage(int hourlyWage)  { this -> hourlyWage = hourlyWage; }
+
+      // "virtual" keyword not needed in child functions. Used for clarity.
+      virtual void display()              { cout << getName() << " - $" << hourlyWage << "/hour" << endl; }
 };
 
 class SalaryEmployee : public Employee
 {
-private:
-	int salary;
-public:
-	int getSalary() const { return salary; }
-	void setSalary(int salary) { this->salary = salary; }
-	void display()
-	{
-		cout << getName() << " - $" << getSalary() << "/year";
-	}
+   private:
+      int salary;
+
+   public:
+      int getSalary() const               { return salary; }
+      void setSalary(int salary)          { this -> salary = salary; }
+
+      // "virtual" keyword not needed in child functions. Used for clarity.
+      virtual void display()              { cout << getName() << " - $" << salary << "/year" << endl; }
 };
+
+#define SIZE 3
 
 int main()
 {
-	Employee * employees[3];
-	char userChoice;
+   Employee * employees[SIZE];
 
-	for (int i = 0; i < 3; i++) // Employee Type Selection
-	{
-		cout << "Employee Type: ";
-		cin >> userChoice;
+   for (int i = 0; i < SIZE; i++)
+   {
+      char type;
+      cout << "Enter employee type (h/s): ";
+      cin >> type;
 
-		string name;
-		cout << "Enter name: ";
-		cin >> name;
-		
-		if (userChoice == 'h')
-		{
-			int wage;
-			cout << "Enter hourly wage: ";
-			cin >> wage;
+      // We could consider a getline here, but we'll assume no
+      // spaces for now for simplicity
+      string name;
+      cout << "Enter name: ";
+      cin >> name;
 
-			HourlyEmployee * hourlyEmployee = new HourlyEmployee;
+      if (type == 'h')
+      {
+         int wage;
+         cout << "Enter the hourly wage: ";
+         cin >> wage;
 
-			hourlyEmployee->setName(name);
-			hourlyEmployee->setHourlyWage(wage);
+         // It would be best to check for valid integers here...
 
-			employees[i] = hourlyEmployee;
+         HourlyEmployee * hourlyEmployee = new HourlyEmployee;
+         hourlyEmployee -> setName(name);
+         hourlyEmployee -> setHourlyWage(wage);
 
-		}
+         employees[i] = hourlyEmployee;
+      }
+      else // type = 's'
+      {
+         int salary;
+         cout << "Enter the salary: ";
+         cin >> salary;
 
-		else
-		{
-			int salary;
-			cout << "Enter yearly salary: ";
-			cin >> salary;
+         // It would be best to check for valid integers here...
 
-			SalaryEmployee * salaryEmployee = new SalaryEmployee;
+         SalaryEmployee * salaryEmployee = new SalaryEmployee;
+         salaryEmployee -> setName(name);
+         salaryEmployee -> setSalary(salary);
 
-			salaryEmployee->setName(name);
-			salaryEmployee->setSalary(salary);
+         employees[i] = salaryEmployee;
+      }
+   }
 
-			employees[i] = salaryEmployee;
-		}
-	}
+   // Now display them all
+   for (int i = 0; i < SIZE; i++)
+   {
+      // Use polymorphism here, don't have an if statement...
+      employees[i] -> display();
+   }
 
-	for (int i = 0; i < 3; i++)
-	{
-		employees[i]->display();
-		cout << endl;
-	}
+   // Clean up the memory. You must delete each employee object
+   // separately. This is different than: delete[] employees; which
+   // would delete a dynamically allocated array of regular employee
+   // objects.
+   for (int i = 0; i < SIZE; i++)
+   {
+      delete employees[i];
 
+      // This is not technically necessary, but it considered good
+      // programming practice to avoid pointing to memory that you
+      // do not own any longer.
+      employees[i] = NULL;
+   }
 
-
-	for (int i = 0; i < 3; i++)
-	{
-		delete employees[i];
-	}
-
-
-
-	system("pause");
-
-	return 0;
+   return 0;
 }
