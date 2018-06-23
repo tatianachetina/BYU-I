@@ -17,8 +17,8 @@ LFLAGS = -lglut -lGLU -lGL
 ###############################################################
 # Build the main game
 ###############################################################
-a.out: driver.o game.o uiInteract.o uiDraw.o point.o velocity.o rifle.o flyingObject.o birds.o bullet.o 
-	g++ driver.o game.o uiInteract.o uiDraw.o point.o velocity.o rifle.o flyingObject.o birds.o bullet.o $(LFLAGS)
+a.out: driver.o game.o uiInteract.o uiDraw.o point.o velocity.o rifle.o flyingObject.o bird.o toughBird.o sacredBird.o bullet.o 
+	g++ driver.o game.o uiInteract.o uiDraw.o point.o velocity.o rifle.o flyingObject.o bird.o toughBird.o sacredBird.o bullet.o $(LFLAGS)
 
 ###############################################################
 # Individual files
@@ -37,7 +37,7 @@ uiInteract.o: uiInteract.cpp uiInteract.h
 point.o: point.cpp point.h
 	g++ -c point.cpp
 
-game.o: game.cpp uiDraw.h uiInteract.h point.h rifle.h bullet.h birds.h
+game.o: game.cpp uiDraw.h uiInteract.h point.h rifle.h bullet.h bird.o toughBird.o sacredBird.o
 	g++ -c game.cpp
 
 driver.o: game.h uiInteract.h driver.cpp
@@ -57,8 +57,14 @@ velocity.o: velocity.h velocity.cpp
 flyingObject.o: flyingObject.h flyingObject.cpp point.h velocity.h uiDraw.h
 	g++ -c flyingObject.cpp
 
-birds.o: birds.h birds.cpp flyingObject.h
-	g++ -c birds.cpp
+bird.o: bird.h bird.cpp flyingObject.h
+	g++ -c bird.cpp
+
+toughBird.o: toughBird.h toughBird.cpp bird.h
+	g++ -c toughBird.cpp
+
+sacredBird.o: sacredBird.h sacredBird.cpp bird.h
+	g++ -c sacredBird.cpp
 
 bullet.o: bullet.h bullet.cpp flyingObject.h
 	g++ -c bullet.cpp

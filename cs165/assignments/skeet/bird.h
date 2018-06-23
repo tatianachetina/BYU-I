@@ -1,21 +1,34 @@
 /*****************************************************************************
- * Source File:
+ * Header File:
  *    Bird : The representation of a bird
  * Author:
  *    Scott Currell
  * Summary:
- *    Child bird class. Children (standard/tough/sacred) will inherit from this
- *    class.
+ *    Child of FlyingObject class. Children (standard/tough/sacred) will
+ *    inherit from this class.
  ****************************************************************************/
 
-#include "birds.h"
-#include <cassert>
+#ifndef BIRD_H
+#define BIRD_H
+
+#include "flyingObject.h"
 
 /*****************************************************************************
- * HIT
+ * STANDARD BIRD
  ****************************************************************************/
-int Bird :: hit()
+class Bird : public FlyingObject
 {
-   kill();
-   return 1;
-}
+   private:
+      Point point;
+      Velocity velocity;
+
+
+   public:
+      Bird();
+      Bird(Point);
+
+      virtual void draw();
+      virtual int hit();
+};
+
+#endif // BIRD_H

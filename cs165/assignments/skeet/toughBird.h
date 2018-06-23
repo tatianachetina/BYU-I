@@ -1,28 +1,34 @@
 /*****************************************************************************
  * Header File:
- *    Bullete : The representation of a bullet
+ *    ToughBird : The representation of a bird
  * Author:
  *    Scott Currell
  * Summary:
- *    Child of FlyingObject class.
+ *    Child of bird class.
  ****************************************************************************/
 
-#ifndef BULLET_H
-#define BULLET_H
-#define BULLET_SPEED 10.0
 
-#include "flyingObject.h"
+#ifndef TOUGHBIRD_H
+#define TOUGHBIRD_H
+
+#include "bird.h"
 
 /*****************************************************************************
- * BILLET
+ * TOUGH BIRD
  ****************************************************************************/
-class Bullet : public FlyingObject
+class ToughBird : public Bird
 {
+   private:
+      int hits;
+      Point point;
+      Velocity velocity;
+
    public:
-       Bullet();
-       void kill();
-       void draw();
-       void fire(Point, float);
+      ToughBird();
+      ToughBird(Point);
+
+      virtual void draw();
+      virtual int hit();
 };
 
-#endif // BULLET_H
+#endif // TOUGHBIRD_H

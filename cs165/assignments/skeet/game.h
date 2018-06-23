@@ -23,7 +23,9 @@
 #include "rifle.h"
 
 // TODO: include your bullet and bird classes
-#include "birds.h"
+#include "bird.h"
+#include "toughBird.h"
+#include "sacredBird.h"
 #include "bullet.h"
 
 #define CLOSE_ENOUGH 15

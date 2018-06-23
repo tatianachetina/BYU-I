@@ -1,29 +1,34 @@
 /*****************************************************************************
  * Header File:
- *    Bird : The representation of a bird
+ *    SacredBird : The representation of a bird
  * Author:
  *    Scott Currell
  * Summary:
- *    Child bird class. Children (standard/tough/sacred) will inherit from this
- *    class.
+ *    Child of bird class.
  ****************************************************************************/
 
-#ifndef BIRD_H
-#define BIRD_H
 
-#include "flyingObject.h"
+#ifndef SACREDBIRD_H
+#define SACREDBIRD_H
+
+#include "bird.h"
 
 /*****************************************************************************
- * POINT
- * A single position.  
+ * SACRED BIRD
  ****************************************************************************/
-class Bird : public FlyingObject
+class SacredBird : public Bird
 {
    private:
+      int hits;
+      Point point;
+      Velocity velocity;
 
    public:
-      virtual int hit();
+      SacredBird();
+      SacredBird(Point);
 
+      virtual void draw();
+      virtual int hit();
 };
 
-#endif // BIRD_H
+#endif // SACREDBIRD_H

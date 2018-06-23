@@ -32,7 +32,7 @@ Game :: Game(Point tl, Point br)
    score = 0;
 
    // TODO: Set your bird pointer to a good initial value (e.g., NULL)
-
+   Bird * bird = NULL;
 }
 
 /****************************************
@@ -42,6 +42,11 @@ Game :: ~Game()
 {
    // TODO: Check to see if there is currently a bird allocated
    //       and if so, delete it.
+   if(bird != NULL)
+   {
+      delete bird;
+      bird = NULL;
+   }
 
 }
 
@@ -130,7 +135,25 @@ Bird* Game :: createBird()
    Bird* newBird = NULL;
 
    // TODO: Fill this in
-   
+   Point point;
+   int randomPoint = random(bottomRight.getY()*.5,topLeft.getY()*.5);
+   int randomBird  = random(1,5);
+
+   point.setX(topLeft.getX());
+   point.setY(randomPoint);
+
+   if (randomBird == 1 || randomBird == 2)
+   {
+      newBird = new Bird;
+   }
+   else if (randomBird == 3)
+   {
+      newBird = new ToughBird;
+   }
+   else
+   {
+      newBird = new SacredBird;
+   }
    
    return newBird;
 }
@@ -195,8 +218,8 @@ void Game :: cleanUpZombies()
       // the bird is dead, but the memory is not freed up yet
       
       // TODO: Clean up the memory used by the bird
-   
-   
+      delete bird;
+      bird = NULL;   
    }
    
    // Look for dead bullets
@@ -261,8 +284,10 @@ void Game :: draw(const Interface & ui)
 
    // TODO: Check if you have a valid bird and if it's alive
    // then call it's draw method
-   
-  
+   if(bird != NULL && bird -> isAlive())
+   {
+      bird -> draw();
+   }
 
    // draw the rifle
    rifle.draw();

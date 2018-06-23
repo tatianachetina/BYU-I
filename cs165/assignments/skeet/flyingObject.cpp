@@ -16,10 +16,10 @@
  * Initialize the flyingObject to the passed parameters
  ****************************************************************************/
 // taken from Point class. Needed?.?.
-// FlyingObject::FlyingObject(Point flyingObjectPoint, Velocity flyingObjectVelocity) // : x(0.0), y(0.0)// taken from Point class. Needed?.?.
+// FlyingObject :: FlyingObject(Point point, Velocity velocity) // : x(0.0), y(0.0)// taken from Point class. Needed?.?.
 // {
-//    setPoint(flyingObjectPoint); // ??? SWC
-//    setVelocity(flyingObjectVelocity); // ??? SWC
+//    setPoint(point); // ??? SWC
+//    setVelocity(velocity); // ??? SWC
 // }
 
 /*****************************************************************************
@@ -27,7 +27,7 @@
  ****************************************************************************/
 void FlyingObject :: setPoint(Point point)
 {
-   flyingObjectPoint = point;
+   this -> point = point;
 }
 
 /*****************************************************************************
@@ -35,7 +35,7 @@ void FlyingObject :: setPoint(Point point)
  ****************************************************************************/
 void FlyingObject :: setVelocity(Velocity velocity)
 {
-   flyingObjectVelocity = velocity;
+   this -> velocity = velocity;
 } 
 
 /*****************************************************************************
@@ -59,8 +59,8 @@ void FlyingObject :: draw()
  ****************************************************************************/
 void FlyingObject :: advance()
 {
-   flyingObjectPoint.addX(flyingObjectVelocity.getDx());
-   flyingObjectPoint.addY(flyingObjectVelocity.getDy());
+   point.addX(velocity.getDx());
+   point.addY(velocity.getDy());
 }
 
 /*****************************************************************************
