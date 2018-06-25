@@ -7,9 +7,8 @@
 # Summary:
 #     Put your summary code here... 
 # Above and Beyond
-#     When you submit your final project (not for milestones),
-#     list anything here that you did to go above and beyond
-#     the base requirements for your project.
+#     Added rounds fired, hits, and accuracy stats to screen. Don't know why
+#		accuracy stat isn't working correctly :(
 ###############################################################
 
 LFLAGS = -lglut -lGLU -lGL

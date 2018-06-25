@@ -361,6 +361,6 @@ void Game :: draw(const Interface & ui)
    accuracyValue.setX(topLeft.getX() + 380);
    accuracyValue.setY(topLeft.getY() - 35);
 
-   drawNumber(accuracyValue, accuracy);
+   drawNumber(accuracyValue, (int)(accuracy));
 
 }

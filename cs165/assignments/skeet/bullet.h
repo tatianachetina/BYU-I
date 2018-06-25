@@ -20,7 +20,6 @@ class Bullet : public FlyingObject
 {
    public:
       Bullet();
-      // void kill();
       void draw();
       void fire(Point, float);
 };
