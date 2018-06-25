@@ -31,6 +31,15 @@ Game :: Game(Point tl, Point br)
    // Set up the initial conditions of the game
    score = 0;
 
+   // Num rounds fired
+   roundsFired = 0;
+
+   // hit count
+   hitCount = 0;
+
+   // accuracy
+   accuracy = 0;
+
    // TODO: Set your bird pointer to a good initial value (e.g., NULL)
    Bird * bird = NULL;
 }
@@ -135,26 +144,6 @@ Bird* Game :: createBird()
    Bird* newBird = NULL;
 
    // TODO: Fill this in
-   // Point point;
-   // int randomPoint = random(bottomRight.getY()*.5,topLeft.getY()*.5);
-   // int randomBird  = random(1,5);
-
-   // point.setX(topLeft.getX());
-   // point.setY(randomPoint);
-
-   // if (randomBird == 1 || randomBird == 2)
-   // {
-   //    newBird = new Bird;
-   // }
-   // else if (randomBird == 3)
-   // {
-   //    newBird = new ToughBird;
-   // }
-   // else
-   // {
-   //    newBird = new SacredBird;
-   // }
-   
    switch(random(1, 4))
    {
       case 1:
@@ -212,6 +201,15 @@ void Game :: handleCollisions()
                
                // the bullet is dead as well
                bullets[i].kill();
+
+               // hit count (NOT POINTS!!!)
+               hitCount++;
+
+               // accuracy
+               if(hitCount)
+               {
+                  accuracy = ((hitCount / roundsFired) * 100);
+               }
             }
          }
       } // if bullet is alive
@@ -282,6 +280,8 @@ void Game :: handleInput(const Interface & ui)
    {
       Bullet newBullet;
       newBullet.fire(rifle.getPoint(), rifle.getAngle());
+
+      roundsFired++;
       
       bullets.push_back(newBullet);
    }
@@ -320,5 +320,47 @@ void Game :: draw(const Interface & ui)
    scoreLocation.setY(topLeft.getY() - 5);
    
    drawNumber(scoreLocation, score);
+
+   // Rounds Fired Label
+   Point roundsFiredLabel;
+   roundsFiredLabel.setX(topLeft.getX() + 295);
+   roundsFiredLabel.setY(topLeft.getY() - 15);
+
+   drawText(roundsFiredLabel, "Rounds Fired: ");
+
+   // Rounds Fired Value
+   Point roundsFiredValue;
+   roundsFiredValue.setX(topLeft.getX() + 380);
+   roundsFiredValue.setY(topLeft.getY() - 5);
+
+   drawNumber(roundsFiredValue, roundsFired);
+
+   // Num Hits Label
+   Point hitCountLabel;
+   hitCountLabel.setX(topLeft.getX() + 295);
+   hitCountLabel.setY(topLeft.getY() - 30);
+
+   drawText(hitCountLabel, "Hits: ");
+
+   // Num Hits Value
+   Point hitCountValue;
+   hitCountValue.setX(topLeft.getX() + 380);
+   hitCountValue.setY(topLeft.getY() - 20);
+
+   drawNumber(hitCountValue, hitCount);
+
+   // Accuracy Label
+   Point accuracyLabel;
+   accuracyLabel.setX(topLeft.getX() + 295);
+   accuracyLabel.setY(topLeft.getY() - 45);
+
+   drawText(accuracyLabel, "Accuracy: ");
+
+   // Accuracy Value
+   Point accuracyValue;
+   accuracyValue.setX(topLeft.getX() + 380);
+   accuracyValue.setY(topLeft.getY() - 35);
+
+   drawNumber(accuracyValue, accuracy);
 
 }

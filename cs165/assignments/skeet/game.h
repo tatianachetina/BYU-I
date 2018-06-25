@@ -71,7 +71,10 @@ private:
    Point bottomRight;
    
    int score;
-   
+   int roundsFired;
+   int hitCount;
+   int accuracy;
+
    Rifle rifle;
    std::vector<Bullet> bullets;
    
