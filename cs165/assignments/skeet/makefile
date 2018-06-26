@@ -1,25 +1,23 @@
 ###############################################################
 # Program:
-#     Milestone 08, Skeet
+#     Project 09, Skeet
 #     Brother Walker, CS165
 # Author:
 #     Scott Currell
 # Summary:
 #     Put your summary code here... 
 # Above and Beyond
-#     When you submit your final project (not for milestones),
-#     list anything here that you did to go above and beyond
-#     the base requirements for your project.
+#     Added rounds fired, hits, and accuracy stats to screen. Don't know why
+#		accuracy stat isn't working correctly :(
 ###############################################################
-
 
 LFLAGS = -lglut -lGLU -lGL
 
 ###############################################################
 # Build the main game
 ###############################################################
-a.out: driver.o game.o uiInteract.o uiDraw.o point.o rifle.o 
-	g++ driver.o game.o uiInteract.o uiDraw.o point.o rifle.o $(LFLAGS)
+a.out: driver.o game.o uiInteract.o uiDraw.o point.o velocity.o rifle.o flyingObject.o bird.o toughBird.o sacredBird.o bullet.o 
+	g++ driver.o game.o uiInteract.o uiDraw.o point.o velocity.o rifle.o flyingObject.o bird.o toughBird.o sacredBird.o bullet.o $(LFLAGS)
 
 ###############################################################
 # Individual files
@@ -38,7 +36,7 @@ uiInteract.o: uiInteract.cpp uiInteract.h
 point.o: point.cpp point.h
 	g++ -c point.cpp
 
-game.o: game.cpp uiDraw.h uiInteract.h point.h rifle.h bullet.h bird.h
+game.o: game.cpp uiDraw.h uiInteract.h point.h rifle.h bullet.h bird.o toughBird.o sacredBird.o
 	g++ -c game.cpp
 
 driver.o: game.h uiInteract.h driver.cpp
@@ -52,7 +50,23 @@ rifle.o: rifle.h point.h uiDraw.h rifle.cpp
 #
 # Then, don't forget to add them to the dependecy list for a.out above.
 #######################################################################
+velocity.o: velocity.h velocity.cpp
+	g++ -c velocity.cpp
 
+flyingObject.o: flyingObject.h flyingObject.cpp point.h velocity.h uiDraw.h
+	g++ -c flyingObject.cpp
+
+bird.o: bird.h bird.cpp flyingObject.h
+	g++ -c bird.cpp
+
+toughBird.o: toughBird.h toughBird.cpp bird.h
+	g++ -c toughBird.cpp
+
+sacredBird.o: sacredBird.h sacredBird.cpp bird.h
+	g++ -c sacredBird.cpp
+
+bullet.o: bullet.h bullet.cpp flyingObject.h
+	g++ -c bullet.cpp
 
 ###############################################################
 # General rules

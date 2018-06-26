@@ -21,9 +21,9 @@ void callBack(const Interface *pUI, void *p)
 {
    Game *pGame = (Game *)p;
    
-   pGame->advance();
-   pGame->handleInput(*pUI);
-   pGame->draw(*pUI);
+   pGame -> advance();
+   pGame -> handleInput(*pUI);
+   pGame -> draw(*pUI);
 }
 
 

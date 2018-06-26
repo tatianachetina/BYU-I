@@ -1,27 +1,34 @@
 /*****************************************************************************
  * Header File:
- *    Bullete : The representation of a bullet
+ *    SacredBird : The representation of a bird
  * Author:
  *    Scott Currell
  * Summary:
- *    Child of FlyingObject class.
+ *    Child of bird class.
  ****************************************************************************/
 
-#ifndef BULLET_H
-#define BULLET_H
-#define BULLET_SPEED 10.0
 
-#include "flyingObject.h"
+#ifndef SACREDBIRD_H
+#define SACREDBIRD_H
+
+#include "bird.h"
 
 /*****************************************************************************
- * BILLET
+ * SACRED BIRD
  ****************************************************************************/
-class Bullet : public FlyingObject
+class SacredBird : public Bird
 {
+   private:
+      int hits;
+      Point point;
+      Velocity velocity;
+
    public:
-      Bullet();
-      void draw();
-      void fire(Point, float);
+      SacredBird();
+      SacredBird(Point);
+
+      virtual void draw();
+      virtual int hit();
 };
 
-#endif // BULLET_H
+#endif // SACREDBIRD_H

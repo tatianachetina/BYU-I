@@ -1,23 +1,23 @@
 /*****************************************************************************
  * Source File:
- *    Bird : The representation of a bird
+ *    ToughBird : The representation of a bird
  * Author:
  *    Scott Currell
  * Summary:
- *    Child of FlyingObject class. Children (standard/tough/sacred) will
- *    inherit from this class.
+ *    Child of bird class.
  ****************************************************************************/
 
-#include "bird.h"
+#include "toughBird.h"
 #include <cassert>
 
 /*****************************************************************************
- * BIRD - default constructor
+ * TOUGH BIRD
+ * Gets three hits
  ****************************************************************************/
-Bird :: Bird()
+ToughBird :: ToughBird()
 {
-   int dx = random(1, 5);
-   int dy = random(3, 5);
+   int dx = random(1, 3);
+   int dy = random(1, 2);
    int x = -200;
    int y = random(-200, 200);
 
@@ -36,18 +36,35 @@ Bird :: Bird()
    Point point(x, y);
    setPoint(point);
    setAlive(true);
+   hits = 3;
 }
 
 /*****************************************************************************
- * DRAW - draws the standard bird
+ * DRAW
+ * Draw the tough bird
  ****************************************************************************/
-void Bird :: draw()
+void ToughBird :: draw()
 {
-    drawCircle(getPoint(), 15);
+   drawToughBird(getPoint(), 15, hits);
 }
 
-int Bird :: hit()
+/*****************************************************************************
+ * HIT
+ * Incriment score for each hit (+3 on final hit). Kill bird after 3 hits.
+ ****************************************************************************/
+int ToughBird :: hit()
 {
-    kill();
-    return 1;
+   hits--;
+
+   if(!hits)
+   {
+      kill();
+      return 3;
+   }
+   else
+   {
+      return 1;
+   }
+
+   return 0;
 }

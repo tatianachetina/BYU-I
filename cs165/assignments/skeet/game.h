@@ -23,8 +23,10 @@
 #include "rifle.h"
 
 // TODO: include your bullet and bird classes
-#include "bullet.h"
 #include "bird.h"
+#include "toughBird.h"
+#include "sacredBird.h"
+#include "bullet.h"
 
 #define CLOSE_ENOUGH 15
 
@@ -69,7 +71,10 @@ private:
    Point bottomRight;
    
    int score;
-   
+   int roundsFired;
+   int hitCount;
+   int accuracy;
+
    Rifle rifle;
    std::vector<Bullet> bullets;
    

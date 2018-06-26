@@ -30,7 +30,6 @@
     * GET X DIRECTION
     */
    float Velocity :: getDx() const { return xVelocity; }
-   
    /**
     * GET Y DIRECTION
     */

@@ -1,32 +1,34 @@
-/***********************************************************************
+/*****************************************************************************
  * Header File:
- *    BIRD : A representation of a bird
+ *    Bird : The representation of a bird
  * Author:
  *    Scott Currell
  * Summary:
- *    Everything wee need to know about the bird: how fast it's moving in
- *    along the X and Y axes.
- ************************************************************************/
+ *    Child of FlyingObject class. Children (standard/tough/sacred) will
+ *    inherit from this class.
+ ****************************************************************************/
 
 #ifndef BIRD_H
 #define BIRD_H
 
-// #include "point.h"
+#include "flyingObject.h"
 
-/*********************************************
- * BIRD
- * A single position.  
- *********************************************/
-class Bird
+/*****************************************************************************
+ * STANDARD BIRD
+ ****************************************************************************/
+class Bird : public FlyingObject
 {
-private:
-   Point birdPoint;
-   Velocity birdVelocity;
+   private:
+      Point point;
+      Velocity velocity;
 
-public:
-   // constructors
-   Bird();
-   Bird(Point, Velocity);
+
+   public:
+      Bird();
+      Bird(Point);
+
+      virtual void draw();
+      virtual int hit();
 };
 
 #endif // BIRD_H

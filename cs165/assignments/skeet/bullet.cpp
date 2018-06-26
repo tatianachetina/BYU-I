@@ -1,26 +1,42 @@
-/***********************************************************************
- * Implementation File:
- *    BULLET : A class representing the lander's bullet
+/*****************************************************************************
+ * Source File:
+ *    Bullet : The representation of a bullet
  * Author:
  *    Scott Currell
  * Summary:
- *    Set lander physics: left, right, and up directions and velocities. 
- ************************************************************************/
+ *    Child of FlyingObject class.
+ ****************************************************************************/
 
 #include "bullet.h"
-// using namespace std;
+#include <cassert>
 
-/********************************************
- * BULLET :: CONSTRUCTOR
- ********************************************/
-   // Bullet :: Bullet()
-   // {
-   //    setDx(0.0);
-   //    setDy(0.0);
-   // }
+/*****************************************************************************
+ * BULLET - default constructor
+ ****************************************************************************/
+Bullet :: Bullet()
+{
+   setAlive(true);
+}
 
-   // Bullet :: Bullet(float xVelocity, float yVelocity)
-   // {
-   //    setDx(xVelocity);
-   //    setDy(yVelocity);
-   // }
+/*****************************************************************************
+ * DRAW
+ ****************************************************************************/
+void Bullet :: draw()
+{
+   drawDot(getPoint());
+}
+
+/*****************************************************************************
+ * FIRE
+ ****************************************************************************/
+void Bullet :: fire(Point riflePoint, float angle)
+{
+   setPoint(riflePoint);
+
+   Velocity velocity;
+
+   velocity.setDx(BULLET_SPEED * (-cos(M_PI / 180 * angle)));
+   velocity.setDy(BULLET_SPEED * (sin(M_PI / 180 * angle)));
+
+   setVelocity(velocity);
+}
