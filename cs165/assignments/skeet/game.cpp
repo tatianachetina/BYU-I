@@ -16,6 +16,7 @@
 #include "uiInteract.h"
 #include "point.h"
 
+#include <cassert>
 #include <vector>
 using namespace std;
 
@@ -203,12 +204,14 @@ void Game :: handleCollisions()
                bullets[i].kill();
 
                // hit count (NOT POINTS!!!)
-               hitCount++;
+               ++hitCount;
 
                // accuracy
-               if(hitCount)
+
+               if (hitCount)
                {
-                  accuracy = ((hitCount / roundsFired) * 100);
+                  assert(hitCount > 0);
+                  accuracy = hitCount / roundsFired * 100;
                }
             }
          }
@@ -354,13 +357,13 @@ void Game :: draw(const Interface & ui)
    accuracyLabel.setX(topLeft.getX() + 295);
    accuracyLabel.setY(topLeft.getY() - 45);
 
-   drawText(accuracyLabel, "Accuracy: ");
+   drawText(accuracyLabel, "Accuracy (%): ");
 
    // Accuracy Value
    Point accuracyValue;
    accuracyValue.setX(topLeft.getX() + 380);
    accuracyValue.setY(topLeft.getY() - 35);
 
-   drawNumber(accuracyValue, (int)(accuracy));
+   drawNumber(accuracyValue, accuracy);
 
 }

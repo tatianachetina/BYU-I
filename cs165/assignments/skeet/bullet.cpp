@@ -35,8 +35,8 @@ void Bullet :: fire(Point riflePoint, float angle)
 
    Velocity velocity;
 
-   velocity.setDx(cos((float)(180 - angle) * M_PI/180) * BULLET_SPEED);
-   velocity.setDy(sin((float)(180 - angle) * M_PI/180) * BULLET_SPEED);
+   velocity.setDx(BULLET_SPEED * (-cos(M_PI / 180 * angle)));
+   velocity.setDy(BULLET_SPEED * (sin(M_PI / 180 * angle)));
 
    setVelocity(velocity);
 }

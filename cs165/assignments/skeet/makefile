@@ -1,6 +1,6 @@
 ###############################################################
 # Program:
-#     Project 08, Skeet
+#     Project 09, Skeet
 #     Brother Walker, CS165
 # Author:
 #     Scott Currell
