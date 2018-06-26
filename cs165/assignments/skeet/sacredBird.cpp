@@ -1,20 +1,20 @@
 /*****************************************************************************
  * Source File:
- *    Bird : The representation of a bird
+ *    SacredBird : The representation of a bird
  * Author:
  *    Scott Currell
  * Summary:
- *    Child of FlyingObject class. Children (standard/tough/sacred) will
- *    inherit from this class.
+ *    Child of bird class.
  ****************************************************************************/
 
-#include "bird.h"
+#include "sacredBird.h"
 #include <cassert>
 
+
 /*****************************************************************************
- * BIRD - default constructor
- ****************************************************************************/
-Bird :: Bird()
+ * SACRED BIRD
+  ****************************************************************************/
+SacredBird :: SacredBird()
 {
    int dx = random(1, 5);
    int dy = random(3, 5);
@@ -38,16 +38,22 @@ Bird :: Bird()
    setAlive(true);
 }
 
+
+
 /*****************************************************************************
- * DRAW - draws the standard bird
+ * DRAW
  ****************************************************************************/
-void Bird :: draw()
+void SacredBird :: draw()
 {
-    drawCircle(getPoint(), 15);
+   drawSacredBird(getPoint(), 15);
 }
 
-int Bird :: hit()
+
+/*****************************************************************************
+ * HIT
+ ****************************************************************************/
+int SacredBird :: hit()
 {
-    kill();
-    return 1;
+   kill();
+   return -10;
 }

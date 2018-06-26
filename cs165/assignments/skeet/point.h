@@ -8,7 +8,6 @@
  *    the location and the bounds.
  ************************************************************************/
 
-
 #ifndef POINT_H
 #define POINT_H
 
@@ -20,25 +19,25 @@
  *********************************************/
 class Point
 {
-public:
-   // constructors
-   Point()           : x(0.0), y(0.0) {}
-   Point(bool check) : x(0.0), y(0.0) {}
-   Point(float x, float y);
+   private:
+      float x; // horizontal position
+      float y; // vertical position
 
-   // getters
-   float getX() const { return x; }
-   float getY() const { return y; }
+   public:
+      // constructors
+      Point()            : x(0.0), y(0.0) {}
+      Point(bool check)  : x(0.0), y(0.0) {}
+      Point(float x, float y);
 
-   // setters
-   void setX(float x);
-   void setY(float y);
-   void addX(float dx) { setX(getX() + dx); }
-   void addY(float dy) { setY(getY() + dy); }
+      // getters
+      float getX() const { return x; }
+      float getY() const { return y; }
 
-private:
-   float x;           // horizontal position
-   float y;           // vertical position
+      // setters
+      void setX(float x);
+      void setY(float y);
+      void addX(float dx) { setX(getX() + dx); }
+      void addY(float dy) { setY(getY() + dy); }
 };
 
 // stream I/O useful for debugging

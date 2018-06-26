@@ -16,6 +16,7 @@
 #include "uiInteract.h"
 #include "point.h"
 
+#include <cassert>
 #include <vector>
 using namespace std;
 
@@ -31,8 +32,17 @@ Game :: Game(Point tl, Point br)
    // Set up the initial conditions of the game
    score = 0;
 
-   // TODO: Set your bird pointer to a good initial value (e.g., NULL)
+   // Num rounds fired
+   roundsFired = 0;
 
+   // hit count
+   hitCount = 0;
+
+   // accuracy
+   accuracy = 0;
+
+   // TODO: Set your bird pointer to a good initial value (e.g., NULL)
+   Bird * bird = NULL;
 }
 
 /****************************************
@@ -42,6 +52,11 @@ Game :: ~Game()
 {
    // TODO: Check to see if there is currently a bird allocated
    //       and if so, delete it.
+   if(bird != NULL)
+   {
+      delete bird;
+      bird = NULL;
+   }
 
 }
 
@@ -105,16 +120,16 @@ void Game :: advanceBird()
    else
    {
       // we have a bird, make sure it's alive
-      if (bird->isAlive())
+      if (bird -> isAlive())
       {
          // move it forward
-         bird->advance();
+         bird -> advance();
          
          // check if the bird has gone off the screen
-         if (!isOnScreen(bird->getPoint()))
+         if (!isOnScreen(bird -> getPoint()))
          {
             // We have missed the bird
-            bird->kill();
+            bird -> kill();
          }
       }
    }
@@ -130,8 +145,19 @@ Bird* Game :: createBird()
    Bird* newBird = NULL;
 
    // TODO: Fill this in
-   
-   
+   switch(random(1, 4))
+   {
+      case 1:
+         newBird = new Bird;
+         break;
+      case 2:
+         newBird = new ToughBird;
+         break;
+      case 3:
+         newBird = new SacredBird;
+         break;
+   }
+
    return newBird;
 }
 
@@ -161,21 +187,32 @@ void Game :: handleCollisions()
          // this bullet is alive, see if its too close
 
          // check if the bird is at this point (in case it was hit)
-         if (bird != NULL && bird->isAlive())
+         if (bird != NULL && bird -> isAlive())
          {
             // BTW, this logic could be more sophisiticated, but this will
             // get the job done for now...
-            if (fabs(bullets[i].getPoint().getX() - bird->getPoint().getX()) < CLOSE_ENOUGH
-                && fabs(bullets[i].getPoint().getY() - bird->getPoint().getY()) < CLOSE_ENOUGH)
+            if (fabs(bullets[i].getPoint().getX() - bird -> getPoint().getX()) < CLOSE_ENOUGH
+                && fabs(bullets[i].getPoint().getY() - bird -> getPoint().getY()) < CLOSE_ENOUGH)
             {
                //we have a hit!
                
                // hit the bird
-               int points = bird->hit();
+               int points = bird -> hit();
                score += points;
                
                // the bullet is dead as well
                bullets[i].kill();
+
+               // hit count (NOT POINTS!!!)
+               ++hitCount;
+
+               // accuracy
+
+               if (hitCount)
+               {
+                  assert(hitCount > 0);
+                  accuracy = hitCount / roundsFired * 100;
+               }
             }
          }
       } // if bullet is alive
@@ -190,13 +227,13 @@ void Game :: handleCollisions()
 void Game :: cleanUpZombies()
 {
    // check for dead bird
-   if (bird != NULL && !bird->isAlive())
+   if (bird != NULL && !bird -> isAlive())
    {
       // the bird is dead, but the memory is not freed up yet
       
       // TODO: Clean up the memory used by the bird
-   
-   
+      delete bird;
+      bird = NULL;   
    }
    
    // Look for dead bullets
@@ -246,6 +283,8 @@ void Game :: handleInput(const Interface & ui)
    {
       Bullet newBullet;
       newBullet.fire(rifle.getPoint(), rifle.getAngle());
+
+      roundsFired++;
       
       bullets.push_back(newBullet);
    }
@@ -261,8 +300,10 @@ void Game :: draw(const Interface & ui)
 
    // TODO: Check if you have a valid bird and if it's alive
    // then call it's draw method
-   
-  
+   if(bird != NULL && bird -> isAlive())
+   {
+      bird -> draw();
+   }
 
    // draw the rifle
    rifle.draw();
@@ -283,5 +324,46 @@ void Game :: draw(const Interface & ui)
    
    drawNumber(scoreLocation, score);
 
-}
+   // Rounds Fired Label
+   Point roundsFiredLabel;
+   roundsFiredLabel.setX(topLeft.getX() + 295);
+   roundsFiredLabel.setY(topLeft.getY() - 15);
 
+   drawText(roundsFiredLabel, "Rounds Fired: ");
+
+   // Rounds Fired Value
+   Point roundsFiredValue;
+   roundsFiredValue.setX(topLeft.getX() + 380);
+   roundsFiredValue.setY(topLeft.getY() - 5);
+
+   drawNumber(roundsFiredValue, roundsFired);
+
+   // Num Hits Label
+   Point hitCountLabel;
+   hitCountLabel.setX(topLeft.getX() + 295);
+   hitCountLabel.setY(topLeft.getY() - 30);
+
+   drawText(hitCountLabel, "Hits: ");
+
+   // Num Hits Value
+   Point hitCountValue;
+   hitCountValue.setX(topLeft.getX() + 380);
+   hitCountValue.setY(topLeft.getY() - 20);
+
+   drawNumber(hitCountValue, hitCount);
+
+   // Accuracy Label
+   Point accuracyLabel;
+   accuracyLabel.setX(topLeft.getX() + 295);
+   accuracyLabel.setY(topLeft.getY() - 45);
+
+   drawText(accuracyLabel, "Accuracy (%): ");
+
+   // Accuracy Value
+   Point accuracyValue;
+   accuracyValue.setX(topLeft.getX() + 380);
+   accuracyValue.setY(topLeft.getY() - 35);
+
+   drawNumber(accuracyValue, accuracy);
+
+}
