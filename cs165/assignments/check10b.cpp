@@ -74,7 +74,7 @@ public:
  * Description: Asks the user for each item in their
  *   inventory and adds them to the vector.
  *****************************************************/
-void promptInventory(vector<Food*> &items)
+void promptInventory(vector <Food*> &items)
 {
    string name;
    int month;
@@ -107,7 +107,6 @@ void promptInventory(vector<Food*> &items)
          cout << endl;
       }
 
-
    } while (name != "quit");
 }
 
@@ -116,10 +115,9 @@ void promptInventory(vector<Food*> &items)
  * Function: displayInventory
  * Description: Displays each item in the inventory
  *****************************************************/
-void displayInventory(vector<Food*> &items)
+void displayInventory(vector <Food*> &items)
 {
    cout << "Your current inventory:\n";
-
 
    // TODO: Fill this in!
    // Use an iterator to walk through the vector
@@ -139,11 +137,10 @@ void displayInventory(vector<Food*> &items)
  *  (occurred before the given month and year) and
  *  deletes them.
  *****************************************************/
-void removeExpiredItems(vector<Food*> &items, int currentMonth,
+void removeExpiredItems(vector <Food*> &items, int currentMonth,
                         int currentYear)
 {
    cout << "Checking for expired items...\n";
-
 
    // TODO: Fill this in!
    // Use an iterator to walk through the vector
@@ -153,7 +150,7 @@ void removeExpiredItems(vector<Food*> &items, int currentMonth,
         it != items.end();)
    {
       if ((*it) -> getYear() < currentYear ||
-          ((*it) -> getMonth() < currentMonth && (*it) -> getYear() == currentYear))
+          ((*it) -> getYear() == currentYear) && (*it) -> getMonth() < currentMonth)
       {
          delete (*it);
          it = items.erase(it);
@@ -172,14 +169,14 @@ void removeExpiredItems(vector<Food*> &items, int currentMonth,
  *  (occurred before the given month and year) and
  *  deletes them.
  *****************************************************/
-void deleteRemainingItems(vector<Food*> &items)
+void deleteRemainingItems(vector <Food*> &items)
 {
    cout << "Cleaning up remaining items...\n";
 
    // You don't need to change this one--it works already.
    // (You can use it as a hint for your above functions...)
 
-   vector<Food*>::iterator it = items.begin();
+   vector <Food*>::iterator it = items.begin();
 
    while (it != items.end())
    {
@@ -200,7 +197,7 @@ void deleteRemainingItems(vector<Food*> &items)
 
 int main()
 {
-   vector<Food*> items;
+   vector <Food*> items;
 
    promptInventory(items);
    cout << endl;
