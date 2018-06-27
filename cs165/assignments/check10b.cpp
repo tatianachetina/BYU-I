@@ -1,9 +1,9 @@
 /***********************************************************************
 * Program:
 *    Checkpoint 10b, Removing from Vectors
-*    Brother {Burton, Falin, Ercanbrack}, CS165
+*    Brother Walker, CS165
 * Author:
-*    your name
+*    Scott Currell
 * Summary: 
 *    Summaries are not necessary for checkpoint assignments.
 ************************************************************************/
@@ -32,16 +32,16 @@ public:
     ***********************/
    Food()
    {
-      name = "Unspecified";
+      name  = "Unspecified";
       month = -1;
-      year = -1;
+      year  = -1;
    }
 
    Food(string name, int month, int year)
    {
-      this->name = name;
-      this->month = month;
-      this->year = year;
+      this -> name  = name;
+      this -> month = month;
+      this -> year  = year;
    }
 
    ~Food()
@@ -53,12 +53,12 @@ public:
     * Getters/Setters
     ***********************/
    string getName() const { return name; }
-   int getMonth() const { return month; }
-   int getYear() const { return year; }
+   int getMonth()   const { return month; }
+   int getYear()    const { return year; }
 
-   void setName(string name) { this->name = name; }
-   void setMonth(int month) { this->month = month; }
-   void setYear(int year) { this->year = year; }
+   void setName(string name) { this -> name = name; }
+   void setMonth(int month)  { this -> month = month; }
+   void setYear(int year)    { this -> year = year; }
 
    /***********************
     * Display
@@ -100,7 +100,9 @@ void promptInventory(vector<Food*> &items)
          // Create a new food item using name, month, and year
          // Add it to the items vector
 
-         
+         Food * newFood = NULL;
+         newFood = new Food(name, month, year);
+         items.push_back(newFood);
 
          cout << endl;
       }
@@ -122,7 +124,12 @@ void displayInventory(vector<Food*> &items)
    // TODO: Fill this in!
    // Use an iterator to walk through the vector
    // and call the display() method on each Food item
-
+   for (std::vector <Food*> :: iterator it = items.begin();
+        it != items.end();
+        it++)
+   {
+      (*it) -> display();
+   }
 
 }
 
@@ -142,7 +149,20 @@ void removeExpiredItems(vector<Food*> &items, int currentMonth,
    // Use an iterator to walk through the vector
    // and detect each item that has expired. Then delete it
    // and erase it from the list.
-
+   for (std::vector <Food*> :: iterator it = items.begin();
+        it != items.end();)
+   {
+      if ((*it) -> getYear() < currentYear ||
+          ((*it) -> getMonth() < currentMonth && (*it) -> getYear() == currentYear))
+      {
+         delete (*it);
+         it = items.erase(it);
+      }
+      else
+      {
+         it++;
+      }
+   }
 
 }
 
