@@ -12,6 +12,32 @@
 #include <algorithm>
 using namespace std;
 
+/***************************************
+ * GAME CONSTRUCTOR
+ ***************************************/
+Game :: Game(Point tl, Point br)
+ : topLeft(tl), bottomRight(br) // define member var values in game.h
+{
+   // Set up the initial conditions of the game
+   // score = 0;
+
+   // Set rock pointer (initial value NULL)
+   Rock * rock = NULL;
+}
+
+/****************************************
+ * GAME DESTRUCTOR
+ ****************************************/
+Game :: ~Game()
+{
+   // If there is currently a rock allocated, delete it
+   if(rock != NULL)
+   {
+      delete rock;
+      rock = NULL;
+   }
+
+}
 
 // You may find this function helpful...
 
@@ -49,3 +75,31 @@ float Game :: getClosestDistance(const FlyingObject &obj1, const FlyingObject &o
 }
 */
 
+/*********************************************
+* Function: handleInput
+* Description: Takes actions according to whatever
+*  keys the user has pressed.
+*********************************************/
+void Game :: handleInput(const Interface & ui)
+{
+   
+}
+
+/*********************************************
+* Function: advance
+* Description: Move everything forward one
+*  step in time.
+*********************************************/
+void Game :: advance()
+{
+   
+}
+
+/*********************************************
+* Function: draw
+* Description: draws everything for the game.
+*********************************************/
+void Game :: draw(const Interface & ui)
+{
+   
+}

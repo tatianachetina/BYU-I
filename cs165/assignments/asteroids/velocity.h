@@ -1,9 +1,40 @@
+/***********************************************************************
+ * Header File:
+ *    VELOCITY : A representation of the flying object's velocity
+ * Author:
+ *    Scott Currell
+ * Summary:
+ *    Everything wee need to know about the flying object's velocity: how fast
+ *    it's moving in along the X and Y axes.
+ ************************************************************************/
+
 #ifndef VELOCITY_H
 #define VELOCITY_H
 
+// #include "point.h"
 
-// Put your velocity class here, or overwrite this file with your own
-// velocity class from the previous project
+/*********************************************
+ * VELOCITY
+ * A single position.  
+ *********************************************/
+class Velocity
+{
+   private:
+      float xVelocity;
+      float yVelocity;
 
+   public:
+      // constructors
+      Velocity();
+      Velocity(float, float);
 
-#endif /* velocity_h */
+      // getters
+      float getDx() const;
+      float getDy() const;
+
+      // setters
+      void setDx(float);
+      void setDy(float);
+};
+
+#endif // VELOCITY_H

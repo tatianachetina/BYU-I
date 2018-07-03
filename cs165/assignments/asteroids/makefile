@@ -1,9 +1,9 @@
 ###############################################################
 # Program:
 #     Milestone 10, Asteroids
-#     Brother {Burton, Falin, Ercanbrack, Comeau}, CS165
+#     Brother Walker, CS165
 # Author:
-#     your name here
+#     Scott Currell
 # Summary:
 #     Put your summary code here... 
 # Above and Beyond
@@ -11,7 +11,6 @@
 #     list anything here that you did to go above and beyond
 #     the base requirements for your project.
 ###############################################################
-
 
 LFLAGS = -lglut -lGLU -lGL
 
