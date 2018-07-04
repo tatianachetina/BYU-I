@@ -1,41 +1,101 @@
 #include <iostream>
-#include "bag.h"
-
 using namespace std;
+// #include "bag.h"
+
+/***********************************************************
+ * Class: Bag
+ * Description: Holds ints...for now
+ ***********************************************************/
+template<class T>
+class Bag
+{
+private:
+   int capacity;
+   int size;
+   int currentAddIndex;
+   T* data;
+
+public:
+   Bag(); // Default constructor
+            
+   // Getters
+   int getCapacity() const { return capacity; }
+   int getCount()    const { return size; }
+
+   T getItem(int index) { return data[index]; }
+   void addItem(T item);
+};
+
+template<class T>
+Bag<T> :: Bag() {
+   data = new T[5];
+   capacity = 5;
+   size = 0;
+   currentAddIndex = 0;
+}
+
+template<class T>
+void Bag<T> :: addItem(T item) {
+
+   if(size == capacity) {
+      capacity *= 2;
+      T* tempArray = new T[capacity];
+      
+      for(int i = 0; i < size; i++) {
+         tempArray[i] = data[i];
+      }
+
+      delete[] data;
+
+      data = tempArray;
+   }
+
+   data[currentAddIndex] = item;
+   currentAddIndex += 1;
+   size += 1;
+}
+
+
+
+
+
+
+
+
 int main() 
 {
-	//PART I
-	Bag firstBag;
-	cout << "---PART I---" << endl;
-	cout << "Count should be 0: " << firstBag.getCount() << endl;
-	cout << "Capacity should be 5: " << firstBag.getCapacity() << endl;
-	firstBag.addItem(9);
-	firstBag.addItem(8);
-	firstBag.addItem(7);
-	cout << "Count should be 3: " << firstBag.getCount() << endl;
-	cout << "Capacity be 5: " << firstBag.getCapacity() << endl;
-	cout << "Item[1] should be 8: " << firstBag.getItem(1) << endl;
+	// //PART I
+	// Bag firstBag;
+	// cout << "---PART I---" << endl;
+	// cout << "Count should be 0: " << firstBag.getCount() << endl;
+	// cout << "Capacity should be 5: " << firstBag.getCapacity() << endl;
+	// firstBag.addItem(9);
+	// firstBag.addItem(8);
+	// firstBag.addItem(7);
+	// cout << "Count should be 3: " << firstBag.getCount() << endl;
+	// cout << "Capacity be 5: " << firstBag.getCapacity() << endl;
+	// cout << "Item[1] should be 8: " << firstBag.getItem(1) << endl;
 	
-	/*
-	// PART II
-	Bag secondBag;
-	cout << "---PART II---" << endl;
-	cout << "Count should be 0: " << secondBag.getCount() << endl;
-	cout << "Capacity be 5: " << secondBag.getCapacity() << endl;
-	secondBag.addItem(1);
-	secondBag.addItem(2);
-	secondBag.addItem(3);
-	secondBag.addItem(4);
-	secondBag.addItem(5);
-	cout << "Count should be 5: " << secondBag.getCount() << endl;
-	cout << "Capacity be 5: " << secondBag.getCapacity() << endl;
-	secondBag.addItem(6);
-	cout << "Count should be 6: " << secondBag.getCount() << endl;
-	cout << "Capacity be 10: " << secondBag.getCapacity() << endl;
-	cout << "Item[5] should be 6: " << secondBag.getItem(5) << endl;
-	*/
+	
+	// // PART II
+	// Bag secondBag;
+	// cout << "---PART II---" << endl;
+	// cout << "Count should be 0: " << secondBag.getCount() << endl;
+	// cout << "Capacity be 5: " << secondBag.getCapacity() << endl;
+	// secondBag.addItem(1);
+	// secondBag.addItem(2);
+	// secondBag.addItem(3);
+	// secondBag.addItem(4);
+	// secondBag.addItem(5);
+	// cout << "Count should be 5: " << secondBag.getCount() << endl;
+	// cout << "Capacity be 5: " << secondBag.getCapacity() << endl;
+	// secondBag.addItem(6);
+	// cout << "Count should be 6: " << secondBag.getCount() << endl;
+	// cout << "Capacity be 10: " << secondBag.getCapacity() << endl;
+	// cout << "Item[5] should be 6: " << secondBag.getItem(5) << endl;
+	
 
-	/*
+	
 	//PART III
 	Bag<char> thirdBag;
 	cout << "---PART III---" << endl;
@@ -52,7 +112,7 @@ int main()
 	cout << "Count should be 6: " << thirdBag.getCount() << endl;
 	cout << "Capacity be 10: " << thirdBag.getCapacity() << endl;
 	cout << "Item[5] should be z: " << thirdBag.getItem(5) << endl;
-	*/
+	
 
 	/*
 	//STRETCH I

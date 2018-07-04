@@ -17,12 +17,23 @@ public:
    Bag(); // Default constructor
 				
    // Getters
-   int getCapacity();
-   int getCount();
+   int getCapacity() const { return capacity; }
+   int getCount()    const { return size; }
 
-   int getItem(int index);
+   int getItem(int index) { return data[index]; }
    void addItem(int item);
 };
 
-#endif
+Bag :: Bag() {
+   data = new int[5];
+   capacity = 5;
+   size = 0;
+   currentAddIndex = 0;
+}
 
+Bag :: addItem(int item) {
+   data[currentAddIndex] = item;
+   currentAddIndex += 1;
+}
+
+#endif
