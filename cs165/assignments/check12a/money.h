@@ -34,12 +34,12 @@ public:
     * Getters and Setters
     ************************/
    int getDollars() const { return dollars; }
-   int getCents() const { return cents; }
+   int getCents()   const { return cents;   }
    
    // These could be done in a smarter way to add cents to dollars if more than 100 etc.
    // but we're trying to keep it simple for this assignment...
-   void setDollars(int dollars) { this->dollars = dollars; }
-   void setCents(int cents) { this->cents = cents; }
+   void setDollars(int dollars) { this -> dollars = dollars; }
+   void setCents(int cents)     { this -> cents = cents;     }
 
    /************************
     * Other public methods
@@ -49,5 +49,8 @@ public:
 };
 
 // Non-member operator prototypes go here
+ostream & operator << (ostream & out, const Money & rhs);
+bool operator == (const Money & lhs, const Money & rhs);
+bool operator != (const Money & lhs, const Money & rhs);
 
 #endif
