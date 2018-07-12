@@ -30,8 +30,8 @@ int main()
 
 
    // TODO: Add code here to add account2 onto account1 using the += operator
-
-
+   account1 += account2;
+   account1.handleOverflow();
 
    cout << "After doing account1 += account2, the value of account1 is: ";
    account1.display();
@@ -43,8 +43,8 @@ int main()
 
    // TODO: Add code here to add account1 and account2 together
    // and put the result in account3
-
-
+   account3 = account1 + account2;
+   account3.handleOverflow();
 
    cout << "From account1 + account2, the value of account3 is: ";
    account3.display();
@@ -52,8 +52,8 @@ int main()
 
 
    // TODO: Add code here to apply the ++ pre-increment operator to account1;
-
-
+   ++account1;
+   account1.handleOverflow();
 
    cout << "After ++account1, the value of account1 is: ";
    account1.display();

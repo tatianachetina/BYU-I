@@ -52,6 +52,33 @@ void Money :: handleOverflow()
    }
 }
 
-
 // Put the bodies of your member functions here!
 
+/*****************************************************************
+ * Function: addition member operator
+ * Purpose: Member Operator Overloading.
+ ****************************************************************/
+Money Money :: operator + (const Money & rhs) const
+{
+   return Money(dollars + rhs.dollars, cents + rhs.cents);  
+}
+
+/*****************************************************************
+ * Function: add onto member operator
+ * Purpose: Member Operator Overloading.
+ ****************************************************************/   
+Money & Money :: operator += (const Money & rhs)
+{
+   dollars += rhs.dollars; cents += rhs.cents; 
+   return *this;  
+}
+
+/*****************************************************************
+ * Function: increment member operator
+ * Purpose: Member Operator Overloading.
+ ****************************************************************/   
+Money & Money :: operator ++ ()
+{
+   cents += 1;
+   return *this;
+}
