@@ -1,6 +1,6 @@
 ###############################################################
 # Program:
-#     Milestone 12, Asteroids
+#     Milestone 13, Asteroids
 #     Brother Walker, CS165
 # Author:
 #     Scott Currell

@@ -12,41 +12,17 @@
 #include <cassert>
 
 /*****************************************************************************
- * SET POINT
- ****************************************************************************/
-void FlyingObject :: setPoint(Point point)
-{
-   this -> point = point;
-}
-
-/*****************************************************************************
- * SET VELOCITY
- ****************************************************************************/
-void FlyingObject :: setVelocity(Velocity velocity)
-{
-   this -> velocity = velocity;
-} 
-
-/*****************************************************************************
- * SET ALIVE
- ****************************************************************************/
-void FlyingObject :: setAlive(bool alive)
-{
-   this -> alive = alive;
-}
-
-/*****************************************************************************
  * DRAW OBJECT
  ****************************************************************************/
-void FlyingObject :: draw()
-{
-   drawCircle(getPoint(), 15);
-}
+// void FlyingObject :: draw()
+// {
+//    drawCircle(getPoint(), 15);
+// }
 
 /*****************************************************************************
  * KILL OBJECT
  ****************************************************************************/
-void FlyingObject :: advance()
+void FlyingObject :: advance(int screenSize)
 {
    point.addX(velocity.getDx());
    point.addY(velocity.getDy());

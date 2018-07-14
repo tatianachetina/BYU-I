@@ -19,6 +19,7 @@
 #define SMALL_ROCK_SPIN 10
 
 #include "flyingObject.h"
+#include "uiDraw.h"
 
 /*****************************************************************************
  * ROCK
@@ -27,16 +28,25 @@ class Rock : public FlyingObject
 {
 private:
    int radius;
+   int rockID;
+
 public:
    // constructor
    Rock();
+
    // getters
    int getRadius() const { return radius; }
+   int getRockID() const { return rockID; }
+
    // setters
-   void setRadius();
+   void setRadius(int radius) { this -> radius = radius; }
+   void setRockID(int rockID) { this -> rockID = rockID; }
+
+   // pure virtual functions
+   // virtual void draw() =0;
+   // virtual void hit() =0;
+
    // methods
-   virtual void draw();
-   // virtual void hit();
    // virtual void kill();
 };
 
@@ -45,7 +55,15 @@ public:
  ****************************************************************************/
 class BigRock : public Rock
 {
+   private:
+      int angle;
+      int rotation;
 
+   public:
+      BigRock();
+      virtual void draw();
+      virtual void hit();
+      int hits;
 };
 
 /*****************************************************************************
@@ -53,7 +71,14 @@ class BigRock : public Rock
  ****************************************************************************/
 class MediumRock : public Rock
 {
+   private:
+      int angle;
+      int rotation;
 
+   public:
+      MediumRock(Point, int);
+      virtual void draw();
+      virtual void hit();
 };
 
 /*****************************************************************************
@@ -61,7 +86,13 @@ class MediumRock : public Rock
  ****************************************************************************/
 class SmallRock : public Rock
 {
+   private:
+      int rotation;
 
+   public:
+      SmallRock(Point, int);
+      virtual void draw();
+      virtual void hit();
 };
 
 #endif /* rocks_h */

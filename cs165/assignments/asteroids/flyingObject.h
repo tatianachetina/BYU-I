@@ -13,7 +13,6 @@
 
 #include "point.h"
 #include "velocity.h"
-#include "uiDraw.h"
 
 /*****************************************************************************
  * POINT
@@ -21,7 +20,7 @@
  ****************************************************************************/
 class FlyingObject
 {
-   private:
+   protected:
       Point point;       // base object point
       Velocity velocity; // base object velocity
       bool alive;        // base state: alive/dead
@@ -33,13 +32,16 @@ class FlyingObject
       bool isAlive()          const { return alive; }
 
       // setters
-      void setPoint(Point);
-      void setVelocity(Velocity);
-      void setAlive(bool);
+      void setPoint(Point point)          { this -> point    = point;    }
+      void setVelocity(Velocity velocity) { this -> velocity = velocity; }
+      void setAlive(bool alive)           { this -> alive    = alive;    }
+
+      // pure virtual functions
+      virtual void draw() =0;
+      virtual void hit() =0;
 
       // methods
-      virtual void draw();
-      virtual void advance();
+      void advance(int);
       virtual void kill();
 };
 

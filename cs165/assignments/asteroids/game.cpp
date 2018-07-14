@@ -15,6 +15,7 @@
 #include <vector>
 
 #define OFF_SCREEN_BORDER_AMOUNT 5
+#define SCREEN_SIZE 400
 
 // These are needed for the getClosestDistance function...
 #include <limits>
@@ -27,38 +28,25 @@ using namespace std;
  * GAME CONSTRUCTOR
  ***************************************/
 Game :: Game(Point tl, Point br)
- : topLeft(tl), bottomRight(br)
+ // : topLeft(tl), bottomRight(br)
 {
-   // Set up the initial conditions of the game
-   score = 0;
-
-   // Num rounds fired
-   roundsFired = 0;
-
-   // hit count
-   hitCount = 0;
-
-   // accuracy
-   accuracy = 0;
-
-   // TODO: Set your rock pointer to a good initial value (e.g., NULL)
-   Rock * rock = NULL;
+   createBigRock();
 }
 
 /****************************************
  * GAME DESTRUCTOR
  ****************************************/
-Game :: ~Game()
-{
-   // TODO: Check to see if there is currently a rock allocated
-   //       and if so, delete it.
-   if(rock != NULL)
-   {
-      delete rock;
-      rock = NULL;
-   }
+// Game :: ~Game()
+// {
+//    // TODO: Check to see if there is currently a rock allocated
+//    //       and if so, delete it.
+//    if(rock != NULL)
+//    {
+//       delete rock;
+//       rock = NULL;
+//    }
 
-}
+// }
 
 /***************************************
  * GAME :: ADVANCE
@@ -66,36 +54,35 @@ Game :: ~Game()
  ***************************************/
 void Game :: advance()
 {
-   advanceBullets();
-   advanceRock();
-
-   handleCollisions();
-   cleanUpZombies();
+   // advanceBullets();
+   // advanceRock();
+   // handleCollisions();
+   // cleanUpZombies();
 }
 
 /***************************************
  * GAME :: ADVANCE BULLETS
  * Go through each bullet and advance it.
  ***************************************/
-void Game :: advanceBullets()
-{
-   // Move each of the bullets forward if it is alive
-   for (int i = 0; i < bullets.size(); i++)
-   {
-      if (bullets[i].isAlive())
-      {
-         // this bullet is alive, so tell it to move forward
-         bullets[i].advance();
+// void Game :: advanceBullets()
+// {
+//    // Move each of the bullets forward if it is alive
+//    for (int i = 0; i < bullets.size(); i++)
+//    {
+//       if (bullets[i].isAlive())
+//       {
+//          // this bullet is alive, so tell it to move forward
+//          bullets[i].advance();
          
-         if (!isOnScreen(bullets[i].getPoint()))
-         {
-            // the bullet has left the screen
-            bullets[i].kill();
-         }
+//          if (!isOnScreen(bullets[i].getPoint()))
+//          {
+//             // the bullet has left the screen
+//             bullets[i].kill();
+//          }
          
-      }
-   }
-}
+//       }
+//    }
+// }
 
 /**************************************************************************
  * GAME :: ADVANCE ROCK
@@ -104,61 +91,74 @@ void Game :: advanceBullets()
  * 2. If there is a rock, and it's alive, advance it
  * 3. Check if the rock has gone of the screen, and if so, "kill" it
  **************************************************************************/
-void Game :: advanceRock()
+void Game :: advanceRocks()
 {
-   if (rock == NULL)
-   {
-      // there is no rock right now, possibly create one
+   // if (rock == NULL)
+   // {
+   //    // there is no rock right now, possibly create one
       
-      // "resurrect" it will some random chance
-      if (random(0, 30) == 0)
-      {
-         // create a new rock
-         rock = createRock();
-      }
-   }
-   else
-   {
-      // we have a rock, make sure it's alive
-      if (rock -> isAlive())
-      {
-         // move it forward
-         rock -> advance();
+   //    // "resurrect" it will some random chance
+   //    if (random(0, 30) == 0)
+   //    {
+   //       // create a new rock
+   //       rock = createRock();
+   //    }
+   // }
+   // else
+   // {
+   //    // we have a rock, make sure it's alive
+   //    if (rock -> isAlive())
+   //    {
+   //       // move it forward
+   //       rock -> advance();
          
-         // check if the rock has gone off the screen
-         if (!isOnScreen(rock -> getPoint()))
-         {
-            // We have missed the rock
-            rock -> kill();
-         }
-      }
-   }
-   
+   //       // check if the rock has gone off the screen
+   //       if (!isOnScreen(rock -> getPoint()))
+   //       {
+   //          // We have missed the rock
+   //          rock -> kill();
+   //       }
+   //    }
+   // }
+
+    vector<Rock*> :: iterator it;
+    for (it = rocks.begin(); it < rocks.end(); ++it)
+    {
+        if ((*it) -> isAlive())
+            (*it) -> advance(SCREEN_SIZE);
+    }
 }
 
-/**************************************************************************
- * GAME :: CREATE ROCK
- * Create a rock of a random type according to the rules of the game.
- **************************************************************************/
-Rock* Game :: createRock()
+/**********************************************************
+ * CREATE BIG ROCK
+ *   creates the medium rock
+ **********************************************************/
+// Rock* Game :: createBigRock()
+void Game :: createBigRock()
 {
-   Rock* newRock = NULL;
+    for (int i = 0; i < 5; i++)
+    {
+        rocks.push_back(new BigRock);
+    }
+}
 
-   // TODO: Fill this in
-   switch(random(1, 4))
-   {
-      case 1:
-         newRock = new Rock;
-         break;
-      case 2:
-         newRock = new ToughRock;
-         break;
-      case 3:
-         newRock = new SacredRock;
-         break;
-   }
+/***********************************************************
+ * CREATE MEDIUM ROCK
+ *   this creates the medium rock
+ ***********************************************************/
+void Game :: createMediumRock(Point bPoint, int mRock)
+{
+    rocks.push_back(new MediumRock(bPoint, mRock));
+    
+}
 
-   return newRock;
+/***********************************************************
+ * CREATE SMALL ROCK
+ *   this creates the small rock
+ ***********************************************************/
+void Game :: createSmallRock(Point bPoint, int sRock)
+{
+    rocks.push_back(new SmallRock(bPoint, sRock));
 }
 
 /**************************************************************************
@@ -177,118 +177,118 @@ bool Game :: isOnScreen(const Point & point)
  * GAME :: HANDLE COLLISIONS
  * Check for a collision between a rock and a bullet.
  **************************************************************************/
-void Game :: handleCollisions()
-{
-   // now check for a hit (if it is close enough to any live bullets)
-   for (int i = 0; i < bullets.size(); i++)
-   {
-      if (bullets[i].isAlive())
-      {
-         // this bullet is alive, see if its too close
+// void Game :: handleCollisions()
+// {
+//    // now check for a hit (if it is close enough to any live bullets)
+//    for (int i = 0; i < bullets.size(); i++)
+//    {
+//       if (bullets[i].isAlive())
+//       {
+//          // this bullet is alive, see if its too close
 
-         // check if the rock is at this point (in case it was hit)
-         if (rock != NULL && rock -> isAlive())
-         {
-            // BTW, this logic could be more sophisiticated, but this will
-            // get the job done for now...
-            if (fabs(bullets[i].getPoint().getX() - rock -> getPoint().getX()) < CLOSE_ENOUGH
-                && fabs(bullets[i].getPoint().getY() - rock -> getPoint().getY()) < CLOSE_ENOUGH)
-            {
-               //we have a hit!
+//          // check if the rock is at this point (in case it was hit)
+//          if (rock != NULL && rock -> isAlive())
+//          {
+//             // BTW, this logic could be more sophisiticated, but this will
+//             // get the job done for now...
+//             if (fabs(bullets[i].getPoint().getX() - rock -> getPoint().getX()) < CLOSE_ENOUGH
+//                 && fabs(bullets[i].getPoint().getY() - rock -> getPoint().getY()) < CLOSE_ENOUGH)
+//             {
+//                //we have a hit!
                
-               // hit the rock
-               int points = rock -> hit();
-               score += points;
+//                // hit the rock
+//                int points = rock -> hit();
+//                score += points;
                
-               // the bullet is dead as well
-               bullets[i].kill();
+//                // the bullet is dead as well
+//                bullets[i].kill();
 
-               // hit count (NOT POINTS!!!)
-               ++hitCount;
+//                // hit count (NOT POINTS!!!)
+//                ++hitCount;
 
-               // accuracy
+//                // accuracy
 
-               if (hitCount)
-               {
-                  assert(hitCount > 0);
-                  accuracy = hitCount / roundsFired * 100;
-               }
-            }
-         }
-      } // if bullet is alive
+//                if (hitCount)
+//                {
+//                   assert(hitCount > 0);
+//                   accuracy = hitCount / roundsFired * 100;
+//                }
+//             }
+//          }
+//       } // if bullet is alive
       
-   } // for bullets
-}
+//    } // for bullets
+// }
 
 /**************************************************************************
  * GAME :: CLEAN UP ZOMBIES
  * Remove any dead objects (take bullets out of the list, deallocate rock)
  **************************************************************************/
-void Game :: cleanUpZombies()
-{
-   // check for dead rock
-   if (rock != NULL && !rock -> isAlive())
-   {
-      // the rock is dead, but the memory is not freed up yet
+// void Game :: cleanUpZombies()
+// {
+//    // check for dead rock
+//    if (rock != NULL && !rock -> isAlive())
+//    {
+//       // the rock is dead, but the memory is not freed up yet
       
-      // TODO: Clean up the memory used by the rock
-      delete rock;
-      rock = NULL;   
-   }
+//       // TODO: Clean up the memory used by the rock
+//       delete rock;
+//       rock = NULL;   
+//    }
    
-   // Look for dead bullets
-   vector<Bullet>::iterator bulletIt = bullets.begin();
-   while (bulletIt != bullets.end())
-   {
-      Bullet bullet = *bulletIt;
-      // Asteroids Hint:
-      // If we had a list of pointers, we would need this line instead:
-      //Bullet* pBullet = *bulletIt;
+//    // Look for dead bullets
+//    vector<Bullet>::iterator bulletIt = bullets.begin();
+//    while (bulletIt != bullets.end())
+//    {
+//       Bullet bullet = *bulletIt;
+//       // Asteroids Hint:
+//       // If we had a list of pointers, we would need this line instead:
+//       //Bullet* pBullet = *bulletIt;
       
-      if (!bullet.isAlive())
-      {
-         // If we had a list of pointers, we would need to delete the memory here...
+//       if (!bullet.isAlive())
+//       {
+//          // If we had a list of pointers, we would need to delete the memory here...
          
          
-         // remove from list and advance
-         bulletIt = bullets.erase(bulletIt);
-      }
-      else
-      {
-         bulletIt++; // advance
-      }
-   }
+//          // remove from list and advance
+//          bulletIt = bullets.erase(bulletIt);
+//       }
+//       else
+//       {
+//          bulletIt++; // advance
+//       }
+//    }
    
-}
+// }
 
 /***************************************
  * GAME :: HANDLE INPUT
  * accept input from the user
  ***************************************/
-void Game :: handleInput(const Interface & ui)
-{
-   // Change the direction of the rifle
-   if (ui.isLeft())
-   {
-      rifle.moveLeft();
-   }
+// void Game :: handleInput(const Interface & ui)
+// {
+//    // Change the direction of the rifle
+//    if (ui.isLeft())
+//    {
+//       rifle.moveLeft();
+//    }
    
-   if (ui.isRight())
-   {
-      rifle.moveRight();
-   }
+//    if (ui.isRight())
+//    {
+//       rifle.moveRight();
+//    }
    
-   // Check for "Spacebar
-   if (ui.isSpace())
-   {
-      Bullet newBullet;
-      newBullet.fire(rifle.getPoint(), rifle.getAngle());
+//    // Check for "Spacebar
+//    if (ui.isSpace())
+//    {
+//       Bullet newBullet;
+//       newBullet.fire(rifle.getPoint(), rifle.getAngle());
 
-      roundsFired++;
+//       roundsFired++;
       
-      bullets.push_back(newBullet);
-   }
-}
+//       bullets.push_back(newBullet);
+//    }
+// }
 
 /*********************************************
  * GAME :: DRAW
@@ -296,75 +296,43 @@ void Game :: handleInput(const Interface & ui)
  *********************************************/
 void Game :: draw(const Interface & ui)
 {
-   // draw the rock
-
-   // TODO: Check if you have a valid rock and if it's alive
-   // then call it's draw method
-   if(rock != NULL && rock -> isAlive())
-   {
-      rock -> draw();
-   }
-
-   // draw the rifle
-   rifle.draw();
-   
-   // draw the bullets, if they are alive
-   for (int i = 0; i < bullets.size(); i++)
-   {
-      if (bullets[i].isAlive())
-      {
-         bullets[i].draw();
-      }
-   }
-   
-   // Put the score on the screen
-   Point scoreLocation;
-   scoreLocation.setX(topLeft.getX() + 5);
-   scoreLocation.setY(topLeft.getY() - 5);
-   
-   drawNumber(scoreLocation, score);
-
-   // Rounds Fired Label
-   Point roundsFiredLabel;
-   roundsFiredLabel.setX(topLeft.getX() + 295);
-   roundsFiredLabel.setY(topLeft.getY() - 15);
-
-   drawText(roundsFiredLabel, "Rounds Fired: ");
-
-   // Rounds Fired Value
-   Point roundsFiredValue;
-   roundsFiredValue.setX(topLeft.getX() + 380);
-   roundsFiredValue.setY(topLeft.getY() - 5);
-
-   drawNumber(roundsFiredValue, roundsFired);
-
-   // Num Hits Label
-   Point hitCountLabel;
-   hitCountLabel.setX(topLeft.getX() + 295);
-   hitCountLabel.setY(topLeft.getY() - 30);
-
-   drawText(hitCountLabel, "Hits: ");
-
-   // Num Hits Value
-   Point hitCountValue;
-   hitCountValue.setX(topLeft.getX() + 380);
-   hitCountValue.setY(topLeft.getY() - 20);
-
-   drawNumber(hitCountValue, hitCount);
-
-   // Accuracy Label
-   Point accuracyLabel;
-   accuracyLabel.setX(topLeft.getX() + 295);
-   accuracyLabel.setY(topLeft.getY() - 45);
-
-   drawText(accuracyLabel, "Accuracy (%): ");
-
-   // Accuracy Value
-   Point accuracyValue;
-   accuracyValue.setX(topLeft.getX() + 380);
-   accuracyValue.setY(topLeft.getY() - 35);
-
-   drawNumber(accuracyValue, accuracy);
+    //check if you have a valid rock and if it's alive
+    // then call it's draw method
+    vector<Rock*> :: iterator it;
+    for (it = rocks.begin(); it < rocks.end(); ++it)
+    {
+        if ((*it)->isAlive())
+            (*it)->draw();
+    }
+    
+    //check if you have a valid ship and if it's alive
+    // then call it's draw method
+    // if (ship != NULL)
+    //     if (ship->isAlive())
+    //         ship->draw();
+    
+    // draw the bullets, if they are alive
+    // vector<Bullet*> :: iterator bit;
+    // for (bit = bullets.begin(); bit < bullets.end(); ++bit)
+    // {
+    //     if ((*bit)->isAlive())
+    //         (*bit)->draw();
+    // }
+    
+    // if (score == 40 & level == 1)
+    // {
+    //     for (int i = 0; i < 4; i++)
+    //         createUltraShip();
+        
+    //     level = 2;
+    // }
+    
+    // Put the score on the screen
+    // Point scoreLocation;
+    // scoreLocation.setX(-195);
+    // scoreLocation.setY(195);
+    
+    // drawNumber(scoreLocation, score);
 
 }
 
